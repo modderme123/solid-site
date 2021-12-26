@@ -1,5 +1,4 @@
 import type { Component } from 'solid-js';
-import { Portal } from 'solid-js/web';
 import { useI18n } from '@solid-primitives/i18n';
 import wordmark from '../assets/wordmark-dark.svg';
 import builder from '../assets/supporters/builder.png';
@@ -12,10 +11,9 @@ const Footer: Component = () => {
   const [t] = useI18n();
   // const data = useData<{ isDark: true }>(0);
   return (
-    <Portal mount={document.getElementById('footer')!}>
       <div
         dir={t('global.dir', {}, 'ltr')}
-        class="py-10 mt-5 bg-solid-lightgray dark:text-white dark:bg-solid-gray rounded-tr-3xl rounded-tl-3xl mx-2"
+        class="py-10 mt-16 border-t dark:text-white dark:bg-solid-gray mx-2"
       >
         <div class="px-7 md:px-0 py-10 lg:px-12 container flex flex-col lg:flex-row items-center space-y-10 lg:space-y-0 lg:space-x-20">
           <img class="w-52" src={wordmark} alt="Solid logo" />
@@ -81,7 +79,6 @@ const Footer: Component = () => {
           </div>
         </div>
       </div>
-    </Portal>
   );
 };
 

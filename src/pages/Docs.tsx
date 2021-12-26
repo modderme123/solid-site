@@ -135,13 +135,13 @@ const Docs: Component<{ hash?: string }> = (props) => {
   useRouteReadyState();
 
   return (
-    <div dir="ltr" class="lg:bg-doc flex min-h-screen flex-auto relative">
+    <div dir="ltr" class="lg:bg-doc min-h-screen relative flex">
       <Show when={data.doc}>
         <div class="flex container">
           <div class="absolute left-0 h-full lg:static lg:w-3/12 bg-gray-100 rounded-br-lg">
             <button
               class={
-                'fixed lg:hidden top-20 right-3 text-white rounded-lg pl-1 pt-1 transition duration-500 ' +
+                'fixed lg:hidden top-24 left-3 text-white rounded-lg pl-1 pt-1 transition duration-500 z-30 ' +
                 'bg-solid-medium reveal-delay'
               }
               classList={{
@@ -176,7 +176,7 @@ const Docs: Component<{ hash?: string }> = (props) => {
               </div>
             </Dismiss>
           </div>
-          <div class="w-full lg:w-9/12 p-10 bg-white">
+          <div class="w-full p-10 pb-0 lg:w-9/12 bg-white">
             <Switch fallback={'Failed to load markdown...'}>
               <Match when={data.loading}>Loading documentation...</Match>
               <Match when={data.doc}>
@@ -200,10 +200,10 @@ const Docs: Component<{ hash?: string }> = (props) => {
                 />
               </Match>
             </Switch>
+            <Footer />
           </div>
         </div>
       </Show>
-      <Footer />
     </div>
   );
 };

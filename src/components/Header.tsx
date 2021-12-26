@@ -12,11 +12,7 @@ import { Transition } from 'solid-transition-group';
 import { useI18n } from '@solid-primitives/i18n';
 import { useData, useLocation } from 'solid-app-router';
 import Nav from './Nav';
-import logo from '../assets/logo.svg';
-import wordmark from '../assets/wordmark.svg';
-import { reflow } from '../utils';
-import PageLoadingBar from './LoadingBar/PageLoadingBar';
-import { routeReadyState, page } from '../utils/routeReadyState';
+import { routeReadyState } from '../utils/routeReadyState';
 import { ResourceMetadata } from '@solid.js/docs';
 
 const Header: Component<{ title?: string }> = () => {
@@ -24,9 +20,7 @@ const Header: Component<{ title?: string }> = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const noSmallHeader = !isHome && !location.pathname.includes('tutorial');
-  const [showLogo, setShowLogo] = createSignal(!isHome);
   const [showHeaderSmall, setShowHeaderSmall] = createSignal(noSmallHeader);
-  const [showHeaderSplash, setShowHeaderSplash] = createSignal(isHome);
 
   const data = useData<{ guides: ResourceMetadata[] | undefined }>();
 
@@ -37,7 +31,6 @@ const Header: Component<{ title?: string }> = () => {
     }
   });
 
-  createEffect(() => {});
   createEffect(
     on(
       routeReadyState,
@@ -47,8 +40,7 @@ const Header: Component<{ title?: string }> = () => {
         const noHeaderSmall = result && !location.pathname.includes('tutorial');
 
         setShowHeaderSmall(noHeaderSmall);
-        setShowLogo(result);
-        setShowHeaderSplash(!result);
+        console.log(noHeaderSmall);
       },
       { defer: true },
     ),
@@ -58,35 +50,8 @@ const Header: Component<{ title?: string }> = () => {
   );
   return (
     <>
-      <Transition onEnter={onEnterBigHeader} onExit={onExitBigHeader}>
-        <Show when={showHeaderSplash()}>
-          <header
-            id="header"
-            class="relative mx-2 rounded-br-3xl rounded-bl-3xl bg-gradient-to-r from-solid-light via-solid-medium to-solid-default text-white overflow-hidden z-[1]"
-          >
-            <PageLoadingBar active={routeReadyState().loadingBar} postion="bottom"></PageLoadingBar>
-            <div class="md:bg-hero dark:from-bg-gray-700 bg-no-repeat bg-right rtl:bg-left px-10">
-              <section class="px-3 lg:px-12 container space-y-10 lg:pb-20 lg:pt-52 py-10">
-                <div class="flex items-center w-[calc(100%+40px)] space-y-4 lg:space-y-0 lg:space-x-4">
-                  <img
-                    class="w-[6rem] h-30 lg:w-48"
-                    style="filter: drop-shadow(-10px 4px 8px rgb(0 22 100 / 10%))"
-                    src={logo}
-                    alt="Solid logo"
-                  />
-                  <img class="w-52 min-w-0 h-15 lg:w-80" src={wordmark} alt="Solid wordmark" />
-                </div>
-                <h2 class="lg:font-semibold text-[26px] sm:text-3xl leading-8 lg:text-4xl lg:leading-10 xl:max-w-3xl">
-                  {t('home.hero')}
-                </h2>
-              </section>
-            </div>
-          </header>
-        </Show>
-      </Transition>
-      <Nav showLogo={showLogo()} />
+      <Nav />
       <div>
-        <Transition onEnter={onEnterSmallHeader} onExit={onExitSmallHeader}>
           <Show when={showHeaderSmall() && !location.pathname.includes('/hack')}>
             <header class="overflow-hidden">
               <div class="bg-gradient-to-r from-solid-light via-solid-medium to-solid-default text-white text-center md:text-left rtl:text-right">
@@ -135,163 +100,9 @@ const Header: Component<{ title?: string }> = () => {
               </div>
             </header>
           </Show>
-        </Transition>
       </div>
     </>
   );
 };
 
-const pageTransitionDuration = 500;
-
-const onEnterBigHeader = (el: Element, done: () => void) => {
-  const headerEl = el as HTMLElement;
-  const parentEl = headerEl.parentElement!;
-  const mainChildren = [...parentEl.children].filter((_, idx) => idx) as HTMLElement[];
-  const headerHeight = headerEl.clientHeight + 'px';
-  const bannerEl = headerEl.firstElementChild as HTMLElement;
-  const elements = [headerEl, bannerEl, ...mainChildren];
-
-  // @ts-ignore
-  window.scrollTo({ top: 0, behavior: 'instant' });
-  elements.forEach((el) => {
-    el.style.transform = `translateY(-${headerHeight})`;
-  });
-
-  bannerEl.style.transform = `translateY(${headerHeight})`;
-
-  reflow();
-
-  elements.forEach((el) => {
-    el.style.transform = '';
-    el.style.transition = `transform ${pageTransitionDuration}ms`;
-  });
-
-  headerEl.addEventListener(
-    'transitionend',
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-
-      elements.forEach((el) => {
-        el.style.transition = '';
-        el.style.transform = '';
-      });
-
-      done();
-    },
-    { once: true },
-  );
-};
-
-const onExitBigHeader = (el: Element, done: () => void) => {
-  const headerEl = el as HTMLElement;
-  const parentEl = headerEl.parentElement!;
-  const mainChildren = [...parentEl.children].filter((_, idx) => idx) as HTMLElement[];
-  const bannerEl = headerEl.firstElementChild as HTMLElement;
-  const headerHeight = headerEl.clientHeight;
-  const elements = [headerEl, bannerEl, ...mainChildren];
-
-  if (page.scrollY >= headerHeight) {
-    headerEl.style.height = '0px';
-    // @ts-ignore
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    return done();
-  }
-
-  elements.forEach((el) => {
-    el.style.transform = `translateY(-${headerHeight}px)`;
-    el.style.transition = `transform ${pageTransitionDuration}ms`;
-  });
-  bannerEl.style.transform = `translateY(${headerHeight}px)`;
-
-  headerEl.addEventListener(
-    'transitionend',
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-
-      elements.forEach((el) => {
-        el.style.transition = '';
-        el.style.transform = '';
-      });
-
-      done();
-    },
-    { once: true },
-  );
-};
-
-const onEnterSmallHeader = (el: Element, done: () => void) => {
-  const headerEl = el as HTMLElement;
-  const bgContainerEl = el.firstElementChild as HTMLElement;
-
-  const contentEl = bgContainerEl.firstElementChild as HTMLElement;
-  const mainContentChild = document.getElementById('main-content')
-    ?.firstElementChild as HTMLElement;
-  const headerHeight = bgContainerEl.clientHeight + 'px';
-  const elements = [bgContainerEl, headerEl, contentEl, mainContentChild];
-
-  bgContainerEl.style.transform = `translateY(-100%)`;
-  contentEl.style.transform = `translateY(100%)`;
-  mainContentChild.style.transform = `translateY(-${headerHeight})`;
-
-  reflow();
-  elements.forEach((el) => {
-    el.style.transform = 'translateY(0)';
-    el.style.transition = `transform ${pageTransitionDuration}ms`;
-  });
-
-  bgContainerEl.addEventListener(
-    'transitionend',
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-
-      elements.forEach((el) => {
-        el.style.transition = '';
-        el.style.transform = '';
-      });
-
-      done();
-    },
-    { once: true },
-  );
-};
-
-const onExitSmallHeader = (el: Element, done: () => void) => {
-  const headerEl = el as HTMLElement;
-  const bgContainerEl = headerEl.firstElementChild as HTMLElement;
-  const contentEl = bgContainerEl.firstElementChild as HTMLElement;
-  const mainContentChild = document.getElementById('main-content')
-    ?.firstElementChild as HTMLElement;
-  const headerHeight = headerEl.clientHeight;
-  const navHeight = 64;
-  const elements = [bgContainerEl, contentEl, mainContentChild];
-
-  if (page.scrollY >= headerHeight + navHeight) {
-    headerEl.style.height = '0px';
-    // @ts-ignore
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    return done();
-  }
-
-  bgContainerEl.style.transform = `translateY(-100%)`;
-  contentEl.style.transform = `translateY(100%)`;
-  mainContentChild.style.transform = `translateY(-${headerHeight}px)`;
-  elements.forEach((el) => {
-    el.style.transition = `transform ${pageTransitionDuration}ms`;
-  });
-
-  bgContainerEl.addEventListener(
-    'transitionend',
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-
-      elements.forEach((el) => {
-        el.style.transition = '';
-        el.style.transform = '';
-      });
-
-      done();
-    },
-    { once: true },
-  );
-};
 export default Header;

@@ -23,6 +23,7 @@ import productive from '../assets/icons/productive.svg';
 import Footer from '../components/Footer';
 import Benchmarks, { GraphData } from '../components/Benchmarks';
 import { useRouteReadyState } from '../utils/routeReadyState';
+import wordmark from '../assets/wordmark.svg';
 
 const Repl = lazy(() => import('../components/ReplTab'));
 
@@ -60,7 +61,20 @@ const Home: Component<{}> = () => {
   });
 
   return (
-    <div class="dark:bg-solid-gray flex flex-col md:pt-8">
+    <div class="dark:bg-solid-gray flex flex-col">
+      <header
+        id="header"
+        class="relative mx-2 rounded-br-3xl rounded-bl-3xl bg-gradient-to-r from-solid-light via-solid-medium to-solid-default text-white overflow-hidden"
+      >
+        <div class="md:bg-hero dark:from-bg-gray-700 bg-no-repeat bg-left rtl:bg-left px-10">
+          <section class="px-3 lg:px-12 container lg:pb-20 lg:pt-20 py-10 text-[26px] flex flex-col text-center items-center">
+            <img class="min-w-0 w-full max-w-[800px]" src={wordmark} alt="Solid wordmark" />
+            <h2 class="lg:font-semibold sm:text-3xl leading-8 lg:text-4xl lg:leading-10 xl:max-w-3xl">
+              {t('home.hero')}
+            </h2>
+          </section>
+        </div>
+      </header>
       <div class="lg:my-2 px-0 lg:px-12 container flex flex-col lg:space-y-10 md:pt-10 bg-blocks-one bg-contain bg-no-repeat bg-left-top">
         <section class="grid sm:grid-cols-2 lg:grid-cols-4 m-5 lg:m-0 space-y-4 lg:space-y-0 lg:space-x-4 rounded-lg">
           <For each={t('home.strengths')}>
@@ -209,7 +223,7 @@ render(() => <CountingComponent />, document.getElementById("app"));`,
             </a>
           </div>
         </section>
-        <section class="dark:bg-gray-500 bg-solid-lightgray rounded-lg grid md:grid-cols-2 py-20 px-10 lg:px-20 md:space-x-12">
+        <section class="dark:bg-gray-500 bg-[#fafafb] rounded-3xl grid md:grid-cols-2 py-20 px-10 lg:px-20 md:space-x-12">
           <div class="gridflex flex-wrap content-center">
             <h2 class="text-2xl font-semibold">
               <img class="w-10 mb-5 block" src={flag} alt="" />
@@ -220,7 +234,7 @@ render(() => <CountingComponent />, document.getElementById("app"));`,
           <ul class="flex flex-wrap">
             <For each={t('home.features.list')}>
               {(feature: string) => (
-                <li class="feature-block border-gray-300 w-full md:w-auto mr-3 mt-3 px-5 py-3">
+                <li class="hover:shadow-sm rounded-full border-gray-200 border w-full md:w-auto mr-3 mt-3 px-5 py-3">
                   <span class="block text-sm">{feature}</span>
                 </li>
               )}

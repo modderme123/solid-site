@@ -7,7 +7,6 @@ import {
   onMount,
   on,
   createContext,
-  createComputed,
   useContext,
   batch,
 } from 'solid-js';
@@ -15,7 +14,6 @@ import { useData } from 'solid-app-router';
 import { Link, NavLink } from 'solid-app-router';
 import { ResourceMetadata } from '@solid.js/docs';
 import { useI18n } from '@solid-primitives/i18n';
-import { createIntersectionObserver } from '@solid-primitives/intersection-observer';
 import { createEventListener, eventListenerMap } from '@solid-primitives/event-listener';
 import createDebounce from '@solid-primitives/debounce';
 import Dismiss from 'solid-dismiss';
@@ -151,17 +149,15 @@ const LanguageSelector: Component<{ ref: HTMLButtonElement; class?: string }> = 
   </li>
 );
 
-const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
+const Nav: Component = () => {
   const [showLangs, toggleLangs] = createSignal(false);
   const [subnav, setSubnav] = createSignal<MenuLinkProps[]>([]);
   const [subnavPosition, setSubnavPosition] = createSignal<number>(0);
-  const [locked, setLocked] = createSignal<boolean>(props.showLogo || true);
   const [closeSubnav, clearSubnavClose] = createDebounce(() => setSubnav([]), 350);
   const [t, { locale }] = useI18n();
   const data = useData<{ guides: ResourceMetadata[] | undefined }>();
   eventListenerMap;
 
-  let firstLoad = true;
   let langBtnTablet!: HTMLButtonElement;
   let langBtnDesktop!: HTMLButtonElement;
   let logoEl!: HTMLDivElement;
@@ -173,21 +169,11 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
   const navListPosition = () => {
     const isRTL = t('global.dir', {}, 'ltr') === 'rtl';
     if (isRTL) {
-      return showLogo() && 'mr-[56px]';
+      return 'mr-[56px]';
     }
-    return showLogo() && 'ml-[56px]';
+    return 'ml-[56px]';
   };
 
-  const [observer] = createIntersectionObserver([], ([entry]) => {
-    if (firstLoad) {
-      firstLoad = false;
-      return;
-    }
-    setLocked(entry.isIntersecting);
-  });
-  observer;
-
-  const showLogo = createMemo(() => props.showLogo || !locked());
   const navList = createMemo(
     on(
       () => [locale, t('global.nav'), data.guides],
@@ -208,18 +194,6 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
           return memo;
         }, []);
       },
-    ),
-  );
-
-  createComputed(
-    on(
-      showLogo,
-      (showLogo) => {
-        const isRTL = t('global.dir', {}, 'ltr') === 'rtl';
-        showLogo && onEnterLogo(logoEl, isRTL);
-        !showLogo && onExitLogo(logoEl, isRTL);
-      },
-      { defer: true },
     ),
   );
 
@@ -248,18 +222,14 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
         setSubnavPosition,
       }}
     >
-      <div use:observer class="h-0" />
       <div
-        class="sticky top-0 z-50 dark:bg-solid-gray bg-white"
-        classList={{ 'shadow-md': showLogo() }}
+        class="sticky top-0 z-50 dark:bg-solid-gray bg-white shadow-md"
       >
         <div class="flex justify-center w-full overflow-hidden">
-          <PageLoadingBar postion="top" active={showLogo() && routeReadyState().loadingBar} />
+          <PageLoadingBar postion="top" active={routeReadyState().loadingBar} />
           <nav class="relative px-3 lg:px-12 container lg:flex justify-between items-center max-h-18 z-20">
             <div
-              class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg dark:bg-solid-gray ${
-                showLogo() ? 'scale-100' : 'scale-0'
-              }`}
+              class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg dark:bg-solid-gray scale-100`}
               ref={logoEl}
             >
               <Link href="/" onClick={onClickLogo} noScroll class={`py-3 flex w-9 `}>
@@ -347,80 +317,6 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
         </Show>
       </div>
     </NavContext.Provider>
-  );
-};
-
-const logoTransition = 500;
-const onEnterLogo = (el: Element, isRTL: boolean) => {
-  const logoEl = el as HTMLElement;
-  const navList = el.nextElementSibling as HTMLElement;
-  const logoWidth = '56px';
-  const elements = [logoEl, navList];
-
-  logoEl.style.transform = `scale(0)`;
-  logoEl.style.transformOrigin = `${isRTL ? 'right' : 'left'} center`;
-  navList.style.transform = `translateX(${isRTL ? '' : '-'}${logoWidth})`;
-
-  reflow();
-  logoEl.style.transform = `scale(1)`;
-  navList.style.transform = `translateX(0)`;
-  elements.forEach((el) => {
-    el.style.transition = `transform ${logoTransition}ms`;
-  });
-  createEventListener(
-    logoEl,
-    'transitioned',
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-      elements.forEach((el) => {
-        el.style.transition = '';
-        el.style.transform = '';
-        el.style.transformOrigin = '';
-      });
-    },
-    { once: true },
-  );
-};
-
-const onExitLogo = (el: Element, isRTL: boolean) => {
-  const logoEl = el as HTMLElement;
-  const navList = el.nextElementSibling as HTMLElement;
-  const logoWidth = '56px';
-  const elements = [logoEl, navList];
-
-  logoEl.style.transform = `scale(1)`;
-  navList.style.transform = `translateX(${isRTL ? '-' : ''}${logoWidth})`;
-  if (isRTL) {
-    navList.style.marginRight = '0';
-  } else {
-    navList.style.marginLeft = '0';
-  }
-
-  reflow();
-  logoEl.style.transform = `scale(0)`;
-  logoEl.style.transformOrigin = `${isRTL ? 'right' : 'left'} center`;
-  navList.style.transform = `translateX(0)`;
-
-  elements.forEach((el) => {
-    el.style.transition = `transform ${logoTransition}ms`;
-    el.style.backfaceVisibility = 'hidden';
-  });
-
-  createEventListener(
-    logoEl,
-    'transitionend',
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-      navList.style.marginLeft = '';
-      navList.style.marginRight = '';
-      elements.forEach((el) => {
-        el.style.transition = '';
-        el.style.transform = '';
-        el.style.backfaceVisibility = '';
-        el.style.transformOrigin = '';
-      });
-    },
-    { once: true },
   );
 };
 
