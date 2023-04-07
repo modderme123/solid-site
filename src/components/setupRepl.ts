@@ -1,5 +1,6 @@
 import CompilerWorker from 'solid-repl/lib/compiler?worker';
 import FormatterWorker from 'solid-repl/lib/formatter?worker';
+import LinterWorker from 'solid-repl/lib/linter?worker';
 
 import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
@@ -23,3 +24,4 @@ window.MonacoEnvironment = {
 
 export const compiler = new CompilerWorker();
 export const formatter = new FormatterWorker();
+export const linter = new LinterWorker();

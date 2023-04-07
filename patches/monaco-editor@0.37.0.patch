@@ -1,8 +1,8 @@
-diff --git a/node_modules/monaco-editor/esm/vs/basic-languages/monaco.contribution.js b/node_modules/monaco-editor/esm/vs/basic-languages/monaco.contribution.js
-index a6b7213..742e723 100644
---- a/node_modules/monaco-editor/esm/vs/basic-languages/monaco.contribution.js
-+++ b/node_modules/monaco-editor/esm/vs/basic-languages/monaco.contribution.js
-@@ -7,80 +7,7 @@ import '../editor/editor.api.js';
+diff --git a/esm/vs/basic-languages/monaco.contribution.js b/esm/vs/basic-languages/monaco.contribution.js
+index 104eae8d8f3deca871249fbe8c4b73e984c9e38f..2c424ace82ad6a80611023a6d79a7d525802d980 100644
+--- a/esm/vs/basic-languages/monaco.contribution.js
++++ b/esm/vs/basic-languages/monaco.contribution.js
+@@ -7,82 +7,7 @@ import '../editor/editor.api.js';
   *-----------------------------------------------------------------------------*/
  
  // src/basic-languages/monaco.contribution.ts
@@ -18,6 +18,7 @@ index a6b7213..742e723 100644
 -import "./csharp/csharp.contribution.js";
 -import "./csp/csp.contribution.js";
  import "./css/css.contribution.js";
+-import "./cypher/cypher.contribution.js";
 -import "./dart/dart.contribution.js";
 -import "./dockerfile/dockerfile.contribution.js";
 -import "./ecl/ecl.contribution.js";
@@ -81,5 +82,6 @@ index a6b7213..742e723 100644
 -import "./twig/twig.contribution.js";
  import "./typescript/typescript.contribution.js";
 -import "./vb/vb.contribution.js";
+-import "./wgsl/wgsl.contribution.js";
 -import "./xml/xml.contribution.js";
 -import "./yaml/yaml.contribution.js";

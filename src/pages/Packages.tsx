@@ -1,5 +1,5 @@
 import { Component, For, Show, createSignal, createMemo, onMount, JSX } from 'solid-js';
-import { useNavigate, useRouteData, useSearchParams } from 'solid-app-router';
+import { useNavigate, useRouteData, useSearchParams } from '@solidjs/router';
 import { PackagesDataProps } from './Packages.data';
 import Fuse from 'fuse.js';
 import { debounce } from '@solid-primitives/scheduled';
@@ -18,7 +18,7 @@ import SideContent from '../components/layout/SideContent';
 import { Icon } from 'solid-heroicons';
 import { createCountdown } from '@solid-primitives/date';
 import { shieldCheck } from 'solid-heroicons/solid';
-import { externalLink } from 'solid-heroicons/outline';
+import { arrowTopRightOnSquare } from 'solid-heroicons/outline';
 
 const FilterButton: Component<{
   onClick: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent>;
@@ -94,7 +94,7 @@ const ResourceLink: Component<Resource> = (props) => {
         <h1 class="pl-3 break-all">{props.title}</h1>
         <Icon
           class="min-w-[28px] w-7 self-start ml-auto text-solid-default dark:text-solid-darkdefault"
-          path={externalLink}
+          path={arrowTopRightOnSquare}
         />
       </div>
       <p class="text-xs py-2">{props.description}</p>
@@ -139,9 +139,9 @@ const Packages: Component = () => {
     threshold: 0.3,
   });
 
-  let [check, setCheck] = createSignal(false);
-  let toggleOfficial = ({ target }: Event) => setCheck((target as HTMLInputElement).checked);
-  let official = data.list.filter((item) => item.official);
+  const [check, setCheck] = createSignal(false);
+  const toggleOfficial = ({ target }: Event) => setCheck((target as HTMLInputElement).checked);
+  const official = data.list.filter((item) => item.official);
 
   const [searchParams] = useSearchParams();
   const [keyword, setKeyword] = createSignal(parseKeyword(searchParams.search || ''));
@@ -153,7 +153,7 @@ const Packages: Component = () => {
     if (keyword() == '') {
       return check() ? official : data.list;
     }
-    let search = fs.search(keyword()).map((result) => result.item);
+    const search = fs.search(keyword()).map((result) => result.item);
     return check() ? search.filter((item) => item.official) : search;
   });
 

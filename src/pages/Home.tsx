@@ -9,7 +9,7 @@ import {
   createMemo,
   createEffect,
 } from 'solid-js';
-import { Link, useRouteData, useIsRouting } from 'solid-app-router';
+import { Link, useRouteData, useIsRouting } from '@solidjs/router';
 import { useI18n } from '@solid-primitives/i18n';
 import { createViewportObserver } from '@solid-primitives/intersection-observer';
 import iconBlocks1 from '../assets/icons/blocks1.svg';
@@ -131,8 +131,8 @@ const Home: Component = () => {
         >
           <div
             dir="ltr"
-            style="height: 70vh; max-height: 600px; min-height: 475px; width: 100%;"
-            class="rounded-lg overflow-hidden flex-1 shadow-2xl order-2 lg:order-1 rtl:order-2 mt-10 lg:mt-0"
+            style="height: 70vh; max-height: 600px; min-height: 475px;"
+            class="rounded-lg flex-1 shadow-2xl order-2 lg:order-1 rtl:order-2 mt-10 lg:mt-0 flex"
           >
             <Show when={loadRepl()}>
               <Suspense

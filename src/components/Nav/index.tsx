@@ -1,5 +1,5 @@
 import { ParentComponent, For, createMemo, createSignal, Show, on, createComputed } from 'solid-js';
-import { Link, NavLink } from 'solid-app-router';
+import { Link, NavLink } from '@solidjs/router';
 import { useI18n } from '@solid-primitives/i18n';
 import { makeIntersectionObserver } from '@solid-primitives/intersection-observer';
 import { debounce } from '@solid-primitives/scheduled';

@@ -1,5 +1,5 @@
 import { lazy } from 'solid-js';
-import { RouteDefinition, Navigate } from 'solid-app-router';
+import { RouteDefinition, Navigate } from '@solidjs/router';
 import { ContributorsData } from './pages/Contributors.data';
 import { BenchmarkData } from './pages/Benchmarks.data';
 import { DocsData } from './pages/Docs.data';

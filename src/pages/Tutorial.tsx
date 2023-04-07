@@ -11,11 +11,11 @@ import {
   ErrorBoundary,
 } from 'solid-js';
 import Repl from 'solid-repl/lib/repl';
-import { useRouteData, NavLink } from 'solid-app-router';
+import { useRouteData, NavLink } from '@solidjs/router';
 import { Icon } from 'solid-heroicons';
 import { arrowLeft, arrowRight, chevronDown, chevronDoubleRight } from 'solid-heroicons/solid';
 
-import { compiler, formatter } from '../components/setupRepl';
+import { compiler, formatter, linter } from '../components/setupRepl';
 import type { TutorialRouteData } from './Tutorial.data';
 import { useI18n } from '@solid-primitives/i18n';
 import Dismiss from 'solid-dismiss';
@@ -278,10 +278,28 @@ const Tutorial: Component = () => {
               }}
               compiler={compiler}
               formatter={formatter}
+              linter={linter}
               isHorizontal={true}
               dark={context.isDark}
               tabs={tabs()}
               setTabs={setTabs}
+              reset={() => {
+                batch(() => {
+                  const fileset = data.solved ? data.solvedJs : data.js;
+                  const files = fileset?.files;
+                  if (!files) return;
+                  batch(() => {
+                    const newTabs = files.map((file) => {
+                      return {
+                        name: file.name + (file.type ? `.${file.type}` : '.jsx'),
+                        source: file.content,
+                      };
+                    });
+                    setTabs(newTabs);
+                    setCurrent(newTabs[0].name);
+                  });
+                });
+              }}
               current={current()}
               setCurrent={setCurrent}
               id="tutorial"

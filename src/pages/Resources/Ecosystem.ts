@@ -1,4 +1,10 @@
-import { code, videoCamera, bookOpen, microphone, terminal } from 'solid-heroicons/outline';
+import {
+  codeBracket,
+  videoCamera,
+  bookOpen,
+  microphone,
+  commandLine,
+} from 'solid-heroicons/outline';
 
 export enum ResourceType {
   Article = 'article',
@@ -41,6 +47,6 @@ export const ResourceTypeIcons = {
   article: bookOpen,
   podcast: microphone,
   video: videoCamera,
-  library: code,
-  package: terminal,
+  library: codeBracket,
+  package: commandLine,
 };

@@ -1,7 +1,7 @@
-import { Component, createSignal, ErrorBoundary } from 'solid-js';
+import { batch, Component, createSignal, ErrorBoundary } from 'solid-js';
 import { Tab } from 'solid-repl';
 import Repl from 'solid-repl/lib/repl';
-import { compiler, formatter } from './setupRepl';
+import { compiler, formatter, linter } from './setupRepl';
 import { useAppContext } from '../AppContext';
 
 let count = 0;
@@ -28,9 +28,16 @@ const OldRepl: Component<{ tabs: Tab[] }> = (props) => {
         id={`repl-${count}`}
         compiler={compiler}
         formatter={formatter}
+        linter={linter}
         isHorizontal={true}
         dark={context.isDark}
         tabs={tabs()}
+        reset={() => {
+          batch(() => {
+            setTabs(initialTabs);
+            setCurrent(initialTabs[0].name);
+          });
+        }}
         setTabs={setTabs}
         current={current()}
         setCurrent={setCurrent}

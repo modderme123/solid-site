@@ -1,12 +1,12 @@
 import { Component, For, Show, createSignal, createMemo } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import Footer from '../components/Footer';
-import { useRouteData, useSearchParams } from 'solid-app-router';
+import { useRouteData, useSearchParams } from '@solidjs/router';
 import { Resource, ResourceType, ResourceTypeIcons, PackageType } from './Resources/Ecosystem';
 import { ResourcesDataProps } from './Resources.data';
 import Fuse from 'fuse.js';
 import { Icon } from 'solid-heroicons';
-import { chevronRight, chevronLeft, shieldCheck, filter } from 'solid-heroicons/outline';
+import { chevronRight, chevronLeft, shieldCheck, funnel } from 'solid-heroicons/outline';
 import { useI18n } from '@solid-primitives/i18n';
 import { createCountdown } from '@solid-primitives/date';
 import { makeIntersectionObserver } from '@solid-primitives/intersection-observer';
@@ -261,7 +261,7 @@ const Resources: Component = () => {
               onClick={onClickFiltersBtn}
               ref={menuButton}
             >
-              <Icon class="h-7 w-7" path={filter} />
+              <Icon class="h-7 w-7" path={funnel} />
             </button>
           </div>
         </div>
