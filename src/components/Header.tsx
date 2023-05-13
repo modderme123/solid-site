@@ -69,11 +69,9 @@ const Header: ParentComponent<{ title?: string }> = () => {
               target="_blank"
               href={t('home.ukraine.link', {}, 'https://www.un.org/en/globalceasefire')}
               class="absolute w-full text-center text-[15px] p-3 bg-yellow-500 hover:bg-yellow-500/80 transition duration-200"
-            >
-              <span class="text-whit">
-                <b>{t('home.ukraine.support', {}, 'Support Global Ceasefire!')}</b>&nbsp;
-                {t('home.ukraine.petition', {}, 'End war in Ukraine and all global conflict →')}
-              </span>{' '}
+            >              
+              <b>{t('home.ukraine.support', {}, 'Support Global Ceasefire!')}</b>&nbsp;
+              {t('home.ukraine.petition', {}, 'End war in Ukraine and all global conflict →')}
             </a>
             <div class="md:bg-hero dark:from-bg-gray-700 bg-no-repeat bg-right rtl:bg-left px-10">
               <a target="_blank" href="https://www.youtube.com/watch?v=pFah4QqiUAg&t=9503s">
@@ -109,7 +107,7 @@ const Header: ParentComponent<{ title?: string }> = () => {
                       href="/guides/getting-started"
                       class="bg-solid-medium flex justify-center items-center px-5 py-3 text-md rounded-lg  hover:bg-solid-gray transition"
                     >
-                      <span class="mt-0.5 ">{t('home.get_started', {}, 'Get Started')}</span>
+                      <span class="mt-0.5">{t('home.get_started', {}, 'Get Started')}</span>
                       <Icon stroke-width="3" class="w-5" path={chevronRight} />
                     </Link>
                   </div>

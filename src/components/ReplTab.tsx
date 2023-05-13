@@ -40,6 +40,7 @@ const OldRepl: Component<{ tabs: Tab[] }> = (props) => {
         }}
         setTabs={setTabs}
         current={current()}
+        hideDevtools={true}
         setCurrent={setCurrent}
       />
     </ErrorBoundary>
