@@ -75,10 +75,7 @@
     "link": "https://playground.solidjs.com/?version=1.0.0#NobwRAdghgtgpmAXGGUCWEwBowBcCeADgsrgM4Ae2YZA9gK4BOAxiWGjIbY7gAQi9GcCABM4jXgF9eAM0a0YvAOR0ANmhEBaAFZkA9AHc4AIyUBuADoQOXHv17MhUXHADKaAObRVU2fMUqtOpauuZWVjL0EMy4aLQQvACChIQAFACU-Fa8DvFkfMBQMWgAbnBYvGRwuInFZQC6vAC8Dk4u7l5Qqqm4jPRw6ZYQ2YLVTAkAPCKlDqpQZGRNIEWxZRm8APy8FmArpXA7vIjbYDuSAHwAEmgTetMl51aS4RBCouKp603nvBPJhLw9OcKiJaMx6PAILgAHQeaoAUVUcEhuAAQvgAJIiVJKKApJTpdJWMCSepAA"
   },
   "performance": {
-    "headline": [
-      "Ориентирован на производительность",
-      "как на клиенте, так и на сервере"
-    ],
+    "headline": ["Ориентирован на производительность", "как на клиенте, так и на сервере"],
     "copy": "Сила мелкозернистой реактивности как подхода сияет во всех заметных бенчмарках. Даже если производительность не является Вашей целью, то она достигается практически без усилий и опыта разработки. Воспринимайте прирост производительности Solid как халявную победу. Solid - это возможность быть быстрым без усилий",
     "link_label": "Читать полную статью",
     "link": "https://ryansolid.medium.com/solidjs-the-tesla-of-javascript-ui-frameworks-6a1d379bc05e"

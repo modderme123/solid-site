@@ -53,14 +53,14 @@ const Examples: Component = () => {
   });
 
   return (
-    <div class="flex flex-col relative">
-      <div class="container my-10 w-[98vw] mx-auto">
-        <div class="md:grid md:grid-cols-12 gap-6">
-          <div class="md:col-span-4 lg:col-span-3 overflow-auto border dark:border-solid-darkLighterBg p-5 rounded md:h-[82vh]">
+    <div class="relative flex flex-col">
+      <div class="container mx-auto my-10 w-[98vw]">
+        <div class="gap-6 md:grid md:grid-cols-12">
+          <div class="overflow-auto rounded border p-5 dark:border-solid-darkLighterBg md:col-span-4 md:h-[82vh] lg:col-span-3">
             <For each={Object.entries(data.list)}>
               {([name, examples]) => (
                 <>
-                  <h3 class="text-xl text-solid-default dark:border-solid-darkLighterBg dark:text-solid-darkdefault border-b-2 font-semibold border-solid pb-2">
+                  <h3 class="border-b-2 border-solid pb-2 text-xl font-semibold text-solid-default dark:border-solid-darkLighterBg dark:text-solid-darkdefault">
                     {t(`examples.${name.toLowerCase()}`, {}, name)}
                   </h3>
                   <div class="mb-10">
@@ -69,12 +69,12 @@ const Examples: Component = () => {
                         <NavLink
                           dir="ltr"
                           href={`/examples/${example.id}`}
-                          class="block my-4 space-y-2 text-sm py-3 pl-2 border-b hover:opacity-60 dark:border-solid-darkLighterBg"
+                          class="my-4 block space-y-2 border-b py-3 pl-2 text-sm hover:opacity-60 dark:border-solid-darkLighterBg"
                           activeClass="text-solid-light dark:text-solid-darkdefault"
                         >
                           <span>{example.name}</span>
                           <span>{example.id === params.id}</span>
-                          <span class="block text-gray-500 text-xs dark:text-white/40 text-md">
+                          <span class="text-md block text-xs text-gray-500 dark:text-white/40">
                             {example.description}
                           </span>
                         </NavLink>
@@ -88,7 +88,7 @@ const Examples: Component = () => {
 
           <div
             dir="ltr"
-            class="h-[82vh] rounded-lg md:col-span-8 lg:col-span-9 overflow-hidden shadow-2xl flex"
+            class="flex h-[82vh] overflow-hidden rounded-lg shadow-2xl md:col-span-8 lg:col-span-9"
           >
             <ErrorBoundary
               fallback={

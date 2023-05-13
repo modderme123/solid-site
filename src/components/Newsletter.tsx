@@ -36,18 +36,18 @@ export const Newsletter: Component<NewsletterProps> = (props) => {
   };
   return (
     <form
-      class={`bg-solid flex flex-col md:flex-row w-full items-center space-x-4 ${props.className}`}
+      class={`bg-solid flex w-full flex-col items-center space-x-4 md:flex-row ${props.className}`}
       onSubmit={(e) => {
         void submit(e);
         return false;
       }}
     >
-      <div class="font-semibold text-md mb-3 md:mb-0">{props.title}</div>
+      <div class="text-md mb-3 font-semibold md:mb-0">{props.title}</div>
       <div class="w-full md:w-3/6">
         <div class="flex space-x-2">
           <input
             type="email"
-            class="w-full rounded-md py-2 px-4 border border-gray-300 dark:bg-solid-darkbg dark:placeholder:text-gray-200 dark:border-neutral-500"
+            class="w-full rounded-md border border-gray-300 px-4 py-2 dark:border-neutral-500 dark:bg-solid-darkbg dark:placeholder:text-gray-200"
             required={true}
             ref={(ref) => (emailRef = ref)}
             disabled={state() === NewsletterState.SENDING}
@@ -55,7 +55,7 @@ export const Newsletter: Component<NewsletterProps> = (props) => {
           />
           <button
             disabled={state() === NewsletterState.SENDING}
-            class="bg-solid-medium py-3 px-5 text-white rounded-md hover:bg-solid-dark transition duration-300"
+            class="rounded-md bg-solid-medium px-5 py-3 text-white transition duration-300 hover:bg-solid-dark"
             type="submit"
           >
             <Show

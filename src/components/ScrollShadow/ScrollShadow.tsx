@@ -92,7 +92,7 @@ const ScrollShadow: ParentComponent<
         ref={shadowLastEl}
         locked={props.locked}
       />
-      <div class="relative flex items-center overflow-auto no-scrollbar" ref={scrollableContainer}>
+      <div class="no-scrollbar relative flex items-center overflow-auto" ref={scrollableContainer}>
         {props.children}
         <Sentinel child="first" direction={direction} rtl={props.rtl} ref={sentinelFirstEl} />
         <Sentinel child="last" direction={direction} rtl={props.rtl} ref={sentinelLastEl} />

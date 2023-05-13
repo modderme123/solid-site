@@ -84,21 +84,21 @@ const AssetPanel: Component<{
   const slug = title.replaceAll(' ', '_').toLowerCase();
   return (
     <div class="shadow-md">
-      <div class="p-5 dark:border-solid-darkLighterBg border-b">
+      <div class="border-b p-5 dark:border-solid-darkLighterBg">
         {t(`media.resources.${slug}`, {}, title)}
       </div>
-      <div class={`py-8 h-56 flex px-10 items-center justify-center ${background}`}>
+      <div class={`flex h-56 items-center justify-center px-10 py-8 ${background}`}>
         <img class="max-h-20" src={example} alt={title} />
       </div>
-      <div class="border-b dark:border-solid-darkLighterBg border-t grid grid-cols-4 text-sm text-solid">
+      <div class="text-solid grid grid-cols-4 border-b border-t text-sm dark:border-solid-darkLighterBg">
         {Object.entries(assets).map(([name, path]) => (
           <a
-            class="flex p-3 justify-center border-r dark:border-solid-darkLighterBg transition hover:opacity-50"
+            class="flex justify-center border-r p-3 transition hover:opacity-50 dark:border-solid-darkLighterBg"
             download={path.split('/').pop()}
             href={path}
           >
             <span class="sr-only">Download asset</span>
-            <img class="w-4 mr-3" alt="Download Arrow" src={downloadArrow} /> {name}
+            <img class="mr-3 w-4" alt="Download Arrow" src={downloadArrow} /> {name}
           </a>
         ))}
       </div>
@@ -112,48 +112,48 @@ const Media: Component = () => {
   useRouteReadyState();
   return (
     <div class="flex flex-col">
-      <div class="my-10 pt-5 pb-10 px-3 lg:px-12 container">
-        <div class="mb-10 md:grid md:grid-cols-6 gap-10">
+      <div class="container my-10 px-3 pb-10 pt-5 lg:px-12">
+        <div class="mb-10 gap-10 md:grid md:grid-cols-6">
           <div class="col-span-2">
             <div class="mb-8">{t('media.copy')}</div>
-            <div class="flex p-4 border-2 dark:border-solid-darkLighterBg justify-between border-b-0">
-              <div class="w-5/12 inline-block">{t('media.brand_font', {}, 'Brand Font')}</div>{' '}
+            <div class="flex justify-between border-2 border-b-0 p-4 dark:border-solid-darkLighterBg">
+              <div class="inline-block w-5/12">{t('media.brand_font', {}, 'Brand Font')}</div>{' '}
               <div class="text-md">Gordita</div>
             </div>
-            <div class="flex h-36 bg-solid-default p-4 justify-between items-end text-white between">
+            <div class="between flex h-36 items-end justify-between bg-solid-default p-4 text-white">
               <div>{t('media.primary', {}, 'Primary Color')}</div>
-              <div class="text-sm cursor-pointer hover:opacity-50" use:copyToClipboard>
+              <div class="cursor-pointer text-sm hover:opacity-50" use:copyToClipboard>
                 #2c4f7c
               </div>
             </div>
-            <div class="flex h-28 bg-solid-medium p-4 justify-between items-end text-white">
+            <div class="flex h-28 items-end justify-between bg-solid-medium p-4 text-white">
               <div>{t('media.secondary', {}, 'Secondary Color')}</div>
-              <div class="text-sm cursor-pointer hover:opacity-50" use:copyToClipboard>
+              <div class="cursor-pointer text-sm hover:opacity-50" use:copyToClipboard>
                 #335d92
               </div>
             </div>
-            <div class="flex h-20 p-4 bg-solid-light justify-between items-end text-white">
+            <div class="flex h-20 items-end justify-between bg-solid-light p-4 text-white">
               <div>{t('media.light', {}, 'Light Color')}</div>
-              <div class="text-sm cursor-pointer hover:opacity-50" use:copyToClipboard>
+              <div class="cursor-pointer text-sm hover:opacity-50" use:copyToClipboard>
                 #446b9e
               </div>
             </div>
-            <div class="flex h-20 p-4 bg-solid-accent justify-between items-end text-white">
+            <div class="flex h-20 items-end justify-between bg-solid-accent p-4 text-white">
               <div>{t('media.accent', {}, 'Accent Color')}</div>
-              <div class="text-sm cursor-pointer hover:opacity-50" use:copyToClipboard>
+              <div class="cursor-pointer text-sm hover:opacity-50" use:copyToClipboard>
                 #66e6ac
               </div>
             </div>
-            <div class="flex h-20 p-4 bg-solid-secondaccent justify-between items-end text-white">
+            <div class="flex h-20 items-end justify-between bg-solid-secondaccent p-4 text-white">
               <div>{t('media.second_accent', {}, 'Second Accent Color')}</div>
-              <div class="text-sm cursor-pointer hover:opacity-50" use:copyToClipboard>
+              <div class="cursor-pointer text-sm hover:opacity-50" use:copyToClipboard>
                 #0CDC73
               </div>
             </div>
-            <div class="text-xs text-gray-500 text-right mt-3">{t('media.copy_hex')}</div>
+            <div class="mt-3 text-right text-xs text-gray-500">{t('media.copy_hex')}</div>
           </div>
           <div class="col-span-4 col-end-7 mt-9 md:mt-0">
-            <div class="lg:grid lg:grid-cols-2 gap-4 space-y-5 md:space-y-0">
+            <div class="gap-4 space-y-5 md:space-y-0 lg:grid lg:grid-cols-2">
               <For each={assets}>{(props) => <AssetPanel {...props} />}</For>
             </div>
           </div>

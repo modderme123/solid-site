@@ -36,14 +36,14 @@ const Sidebar: Component<{
   current: Accessor<string | null>;
   hash: string | undefined;
 }> = (props) => (
-  <ul class="lg:pl-10 overflow-auto py-10 flex dark:text-white flex-col flex-1">
+  <ul class="flex flex-1 flex-col overflow-auto py-10 dark:text-white lg:pl-10">
     <For each={props.items}>
       {(firstLevel: Section) => (
         <SectionButton
           title={firstLevel.value}
           class={
-            `text-left w-full dark:text-white border-b border-gray-200 dark:border-gray-500 hover:text-gray-400 transition ` +
-            `flex flex-wrap content-center justify-between space-x-2 text-xl p-2 py-2 mt-2 mb-6`
+            `w-full border-b border-gray-200 text-left transition hover:text-gray-400 dark:border-gray-500 dark:text-white ` +
+            `mb-6 mt-2 flex flex-wrap content-center justify-between space-x-2 p-2 py-2 text-xl`
           }
           classList={{
             'font-semibold text-solid-medium dark:text-solid-darkdefault':
@@ -56,7 +56,7 @@ const Sidebar: Component<{
               {(secondLevel, index) => (
                 <SectionButton
                   title={secondLevel.value}
-                  class="block pl-2 text-gray-500 dark:text-gray-300 py-1 text-md font-semibold break-words"
+                  class="text-md block break-words py-1 pl-2 font-semibold text-gray-500 dark:text-gray-300"
                   classList={{
                     'text-solid hover:text-solid-dark dark:hover:text-solid-light':
                       `#${slug(secondLevel.value)}` === props.hash,
@@ -73,7 +73,7 @@ const Sidebar: Component<{
                           <SectionButton
                             href={`#${slug(thirdLevel.value)}`}
                             title={thirdLevel.value}
-                            class="block ml-6 text-gray-400 pb-2 text-sm my-2 break-words"
+                            class="my-2 ml-6 block break-words pb-2 text-sm text-gray-400"
                             classList={{
                               'text-solid hover:text-solid-dark dark:hover:text-solid-dark':
                                 `#${slug(thirdLevel.value)}` === props.hash,
@@ -102,7 +102,7 @@ const Content: Component<{
     <Match when={data.loading}>Loading documentation...</Match>
     <Match when={data.doc}>
       <Show when={data.fallback}>
-        <div class="bg-yellow-100 dark:bg-yellow-900 p-5 rounded-lg text-sm mb-10">
+        <div class="mb-10 rounded-lg bg-yellow-100 p-5 text-sm dark:bg-yellow-900">
           Unfortunately our docs are not currently available in your language. We encourage you to
           support Solid by{' '}
           <a
@@ -115,7 +115,7 @@ const Content: Component<{
           .
         </div>
       </Show>
-      <div class="prose dark:prose-invert lg:px-8 prose-solid max-w-full">{data.doc?.default}</div>
+      <div class="prose-solid prose max-w-full dark:prose-invert lg:px-8">{data.doc?.default}</div>
     </Match>
   </Switch>
 );

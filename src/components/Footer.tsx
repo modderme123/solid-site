@@ -18,12 +18,12 @@ const Supporter: Component<{
   href: string;
 }> = (props) => (
   <a
-    class="mx-4 hover:opacity-50 dark:brightness-150 transition grid"
+    class="mx-4 grid transition hover:opacity-50 dark:brightness-150"
     target="_blank"
     rel="noopener"
     href={props.href}
   >
-    <img class="w-40 m-auto md:m-0" src={props.img} alt={props.alt} loading="lazy" />
+    <img class="m-auto w-40 md:m-0" src={props.img} alt={props.alt} loading="lazy" />
   </a>
 );
 
@@ -32,9 +32,9 @@ const Footer: Component = () => {
   return (
     <div
       dir={t('global.dir', {}, 'ltr')}
-      class="py-10 mt-5 bg-solid-lightgray dark:bg-solid-darkLighterBg rounded-tr-3xl rounded-tl-3xl mx-2"
+      class="mx-2 mt-5 rounded-tl-3xl rounded-tr-3xl bg-solid-lightgray py-10 dark:bg-solid-darkLighterBg"
     >
-      <div class="px-7 md:px-0 py-10 lg:px-12 container flex flex-col lg:flex-row items-center space-y-10 lg:space-y-0 lg:space-x-20">
+      <div class="container flex flex-col items-center space-y-10 px-7 py-10 md:px-0 lg:flex-row lg:space-x-20 lg:space-y-0 lg:px-12">
         <img class="w-52 dark:invert" src={wordmark} alt="Solid logo" />
         <div class="text-sm">
           <Newsletter
@@ -54,11 +54,11 @@ const Footer: Component = () => {
               'SolidJS and logo are trademarks of the SolidJS project and Core Team. Gordita font copyright and licensed non-commercially from typeatelier.com.',
             )}
           </p>
-          <div class="relative flex flex-col md:flex-row justify-center justify-items-center mb-8 mt-12 gap-12 p-7 bg-white/30 dark:bg-solid-darkbg/20 md:mb-5 md:mt-7 md:rounded-3xl md:justify-start items-center">
-            <span class="text-center font-semibold text-gray-600 dark:text-white text-lg md:static md:text-left md:w-1/6">
+          <div class="relative mb-8 mt-12 flex flex-col items-center justify-center justify-items-center gap-12 bg-white/30 p-7 dark:bg-solid-darkbg/20 md:mb-5 md:mt-7 md:flex-row md:justify-start md:rounded-3xl">
+            <span class="text-center text-lg font-semibold text-gray-600 dark:text-white md:static md:w-1/6 md:text-left">
               {t('global.footer.sponsored_by')}
             </span>
-            <div class="grid grid-cols-1 gap-8 auto-rows-fr sm:grid-cols-2 md:grid-cols-3 md:auto-rows-auto w-full">
+            <div class="grid w-full auto-rows-fr grid-cols-1 gap-8 sm:grid-cols-2 md:auto-rows-auto md:grid-cols-3">
               <Supporter alt="Cloudflare" href="https://www.cloudflare.com/" img={cloudflare} />
               <Supporter alt="Netlify" href="https://www.netlify.com/" img={netlify} />
               <Supporter alt="Builder.io" href="https://www.builder.io/" img={builder} />
@@ -70,14 +70,14 @@ const Footer: Component = () => {
             </div>
           </div>
           <div class="flex justify-between">
-            <p class="text-sm text-center text-gray-600 dark:text-gray-300">
+            <p class="text-center text-sm text-gray-600 dark:text-gray-300">
               {t('global.footer.updated', {
                 date: __UPDATED_AT__,
                 version: __SOLID_VERSION__,
               })}
             </p>
           </div>
-          <ul class="lg:hidden flex justify-center items-center pt-12">
+          <ul class="flex items-center justify-center pt-12 lg:hidden">
             <Social />
           </ul>
         </div>

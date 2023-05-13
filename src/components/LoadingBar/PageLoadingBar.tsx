@@ -11,11 +11,11 @@ const PageLoadingBar: Component<{
 
   return (
     <div
-      class="absolute z-50 w-full overflow-hidden pointer-events-none"
+      class="pointer-events-none absolute z-50 w-full overflow-hidden"
       style={`${props.postion}: 0; height: ${props.postion === 'top' ? '6px' : '10px'};`}
     >
       <div
-        class="w-full h-full rounded-full"
+        class="h-full w-full rounded-full"
         style={`background: #000955; transform: translateX(-100%); animation: ${animationValue()}; transform-origin: left; `}
       ></div>
     </div>

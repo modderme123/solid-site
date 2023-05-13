@@ -18,17 +18,17 @@ export const BlogArticle: Component = () => {
 
   return (
     <div class="flex flex-col">
-      <div class="my-2 lg:my-10 pt-5 pb-10 px-3 lg:px-12 container">
-        <div class="mb-10 lg:flex justify-center">
+      <div class="container my-2 px-3 pb-10 pt-5 lg:my-10 lg:px-12">
+        <div class="mb-10 justify-center lg:flex">
           <div class="space-y-10 px-4 lg:px-0">
             <Show
-              fallback={<div class="text-center p-10 m-10">Loading article...</div>}
+              fallback={<div class="m-10 p-10 text-center">Loading article...</div>}
               when={!data.loading}
             >
               <div class="container lg:px-10">
-                <div class="text-center space-y-5">
-                  <img class="rounded-md mb-10 shadow-md" src={data.details.img} />
-                  <h1 class="text-4xl font-semibold mt-10 text-solid-medium dark:text-solid-darkdefault">
+                <div class="space-y-5 text-center">
+                  <img class="mb-10 rounded-md shadow-md" src={data.details.img} />
+                  <h1 class="mt-10 text-4xl font-semibold text-solid-medium dark:text-solid-darkdefault">
                     {data.details.title}
                   </h1>
                   <div class="text-md">
@@ -39,8 +39,8 @@ export const BlogArticle: Component = () => {
                     on {new Date(data.details.date).toDateString()}
                   </div>
                 </div>
-                <hr class="mt-10 w-3/6 mx-auto" />
-                <article class="my-10 prose dark:prose-invert mx-auto">
+                <hr class="mx-auto mt-10 w-3/6" />
+                <article class="prose mx-auto my-10 dark:prose-invert">
                   {data.article && (
                     <data.article
                       components={{
@@ -60,10 +60,10 @@ export const BlogArticle: Component = () => {
                     />
                   )}
                 </article>
-                <hr class="mt-10 w-3/6 mx-auto" />
-                <div class="flex flex-row justify-center mt-10">
+                <hr class="mx-auto mt-10 w-3/6" />
+                <div class="mt-10 flex flex-row justify-center">
                   <NavLink href="/blog">
-                    <figure class={`inline-block chevron ${chevron()}`} /> Back to the SolidJS Blog
+                    <figure class={`chevron inline-block ${chevron()}`} /> Back to the SolidJS Blog
                   </NavLink>
                 </div>
               </div>

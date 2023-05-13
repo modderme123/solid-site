@@ -76,7 +76,7 @@ export const MenuLink: ParentComponent<MenuLinkProps> = (props) => {
       <NavLink
         href={props.path}
         target={props.external ? '_blank' : undefined}
-        class="inline-flex items-center transition text-[15px] dark:hover:bg-solid-darkLighterBg sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-white pointer-fine:hover:bg-solid-medium whitespace-nowrap"
+        class="m-0 inline-flex items-center whitespace-nowrap rounded px-3 py-3 text-[15px] transition dark:hover:bg-solid-darkLighterBg sm:m-1 sm:px-4 sm:text-base pointer-fine:hover:bg-solid-medium pointer-fine:hover:text-white"
         activeClass="bg-solid-medium dark:bg-solid-light text-white"
         onClick={() => !props.external && onClick()}
         noScroll
@@ -85,7 +85,7 @@ export const MenuLink: ParentComponent<MenuLinkProps> = (props) => {
         <span>{props.title}</span>
         <Show when={props.external}>
           <svg
-            class="h-5 z-50 -mt-1 ltr:ml-1 rtl:mr-1 opacity-30"
+            class="z-50 -mt-1 h-5 opacity-30 ltr:ml-1 rtl:mr-1"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

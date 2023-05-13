@@ -15,11 +15,11 @@ const SideContent: Component<{
   useRouteReadyState();
 
   return (
-    <div dir="ltr" class="lg:bg-doc dark:lg:bg-darkDoc flex min-h-screen flex-auto relative">
-      <div class="flex container">
-        <div class="absolute z-20 left-0 h-full lg:static lg:w-3/12 bg-gray-100 dark:bg-gray-900 rounded-br-lg">
+    <div dir="ltr" class="relative flex min-h-screen flex-auto lg:bg-doc dark:lg:bg-darkDoc">
+      <div class="container flex">
+        <div class="absolute left-0 z-20 h-full rounded-br-lg bg-gray-100 dark:bg-gray-900 lg:static lg:w-3/12">
           <button
-            class={`fixed lg:hidden top-20 right-3 text-white rounded-lg transition duration-500 bg-solid-medium reveal-delay`}
+            class={`reveal-delay fixed right-3 top-20 rounded-lg bg-solid-medium text-white transition duration-500 lg:hidden`}
             classList={{
               'rotate-90': props.toggleVisible(),
               'opacity-0': routeReadyState().routeChanged,
@@ -30,17 +30,17 @@ const SideContent: Component<{
           </button>
           <Dismiss
             show
-            class="w-0 lg:w-auto lg:col-span-3 sticky top-[4rem]"
+            class="sticky top-[4rem] w-0 lg:col-span-3 lg:w-auto"
             menuButton={menuButton}
             open={props.toggleVisible}
             setOpen={props.setToggleVisible}
           >
             <div
               class={
-                'w-[85vw] overflow-auto p-10 shadow-2xl bg-white dark:bg-solid-darkbg border-gray-100 ' +
-                'dark:bg-solid-darkLighterBg fixed left-0 top-14 lg:bg-transparent lg:translate-x-0 lg:duration-0 transition-transform ' +
-                'duration-300 max-w-md lg:w-auto lg:border-0 lg:shadow-none lg:p-0 lg:flex-col lg:top-12 ' +
-                'relative lg:flex z-50'
+                'w-[85vw] overflow-auto border-gray-100 bg-white p-10 shadow-2xl dark:bg-solid-darkbg ' +
+                'fixed left-0 top-14 transition-transform dark:bg-solid-darkLighterBg lg:translate-x-0 lg:bg-transparent lg:duration-0 ' +
+                'max-w-md duration-300 lg:top-12 lg:w-auto lg:flex-col lg:border-0 lg:p-0 lg:shadow-none ' +
+                'relative z-50 lg:flex'
               }
               classList={{
                 '-translate-x-full shadow-none': !props.toggleVisible(),
@@ -52,7 +52,7 @@ const SideContent: Component<{
             </div>
           </Dismiss>
         </div>
-        <div class="w-full lg:w-9/12 p-5 md:p-10 bg-white dark:bg-solid-darkbg">
+        <div class="w-full bg-white p-5 dark:bg-solid-darkbg md:p-10 lg:w-9/12">
           {props.content}
         </div>
       </div>

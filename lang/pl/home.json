@@ -3,10 +3,9 @@
   "get_started": "Rozpocznij",
   "intro_video": "Wprowadzenie do Solid (100 sekund)",
   "intro_video_advanced": "Zaawansowane wprowadzenie (10 minut)",
-  "news":
-      {
-        "content": "Odwiedź nowo otwarty <b>Solid Store</b> po naklejki, t-shirty i inne gadżety!"
-      },
+  "news": {
+    "content": "Odwiedź nowo otwarty <b>Solid Store</b> po naklejki, t-shirty i inne gadżety!"
+  },
   "strengths": [
     {
       "icon": "performant",

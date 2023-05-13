@@ -4,6 +4,6 @@ export const LanguageSelector: ParentComponent<{ ref: HTMLButtonElement }> = (pr
   <button
     aria-label="Select Language"
     ref={props.ref}
-    class="dark:brightness-150 focus:color-red-500 bg-no-repeat bg-center bg-translate bg-24 hover:border-gray-500 cursor-pointer dark:border-gray-600 dark:hover:border-gray-500 px-6 pl-4 ml-2 rounded-md h-10 border border-solid-100 pt-4 text-sm my-3 w-full"
+    class="focus:color-red-500 border-solid-100 my-3 ml-2 h-10 w-full cursor-pointer rounded-md border bg-translate bg-24 bg-center bg-no-repeat px-6 pl-4 pt-4 text-sm hover:border-gray-500 dark:border-gray-600 dark:brightness-150 dark:hover:border-gray-500"
   />
 );

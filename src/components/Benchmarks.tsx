@@ -42,10 +42,10 @@ const Chart: Component<{ rows: RowData[]; scale: string; direction: string }> = 
                 <td class="w-4/6 py-1">
                   <div
                     ref={(ref) => (chartRef = ref)}
-                    class="relative z-10 rounded-3xl overflow-hidden"
+                    class="relative z-10 overflow-hidden rounded-3xl"
                   >
                     <div
-                      class="transition-transform -translate-x-full duration-700 w-full h-full rounded-3xl ltr:text-right rtl:text-left text-xxs py-1"
+                      class="h-full w-full -translate-x-full rounded-3xl py-1 text-xxs transition-transform duration-700 ltr:text-right rtl:text-left"
                       classList={{
                         'bg-solid-light text-white font-semibold': row.active,
                         'bg-gray-100 dark:bg-solid-darkLighterBg': !row.active,
@@ -59,7 +59,7 @@ const Chart: Component<{ rows: RowData[]; scale: string; direction: string }> = 
                     >
                       {row.score ? (
                         <figure>
-                          <span class="inline-block p-1 px-2 rounded-full">
+                          <span class="inline-block rounded-full p-1 px-2">
                             {row.score.toLocaleString()}
                           </span>
                         </figure>
@@ -104,19 +104,19 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
         when={expanded()}
         fallback={
           <button
-            class={`py-3 text-sm chevron button text-solid-default dark:text-solid-darkdefault font-semibold hover:text-gray-500 dark:hover:text-gray-300 chevron-${direction()}`}
+            class={`chevron button py-3 text-sm font-semibold text-solid-default hover:text-gray-500 dark:text-solid-darkdefault dark:hover:text-gray-300 chevron-${direction()}`}
             onClick={() => setExpanded(true)}
           >
             {t('home.benchmarks.show_more', {}, 'Show more client + server benchmarks')}
           </button>
         }
       >
-        <div class="mt-4 flex flex-col space-y-2 m-auto lg:space-y-0 lg:m-0 lg:flex-row">
+        <div class="m-auto mt-4 flex flex-col space-y-2 lg:m-0 lg:flex-row lg:space-y-0">
           {props.list.map((item, index) => {
             return (
               <button
                 onClick={() => setCurrent(index)}
-                class="text-xs lg:mr-1 p-3 rounded md:hover:bg-gray-400 dark:md:hover:bg-gray-400 transition duration-150 hover:text-white"
+                class="rounded p-3 text-xs transition duration-150 hover:text-white md:hover:bg-gray-400 dark:md:hover:bg-gray-400 lg:mr-1"
                 classList={{
                   'active text-white bg-solid-light': current() === index,
                   'bg-gray-100 dark:bg-gray-500': current() !== index,
@@ -128,11 +128,11 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
           })}
         </div>
         <div>
-          <div class="pt-5 text-xs block">{props.list[current()].description}</div>
+          <div class="block pt-5 text-xs">{props.list[current()].description}</div>
           <Show when={props.list[current()].link}>
             <a
               target="_blank"
-              class="button text-xs block mt-3 text-solid-default dark:text-solid-darkdefault chevron chevron-right font-semibold hover:text-gray-500 dark:hover:text-gray-300"
+              class="button chevron chevron-right mt-3 block text-xs font-semibold text-solid-default hover:text-gray-500 dark:text-solid-darkdefault dark:hover:text-gray-300"
               rel="noopener noreferrer"
               href={props.list[current()].link}
             >

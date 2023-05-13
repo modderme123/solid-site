@@ -47,7 +47,6 @@ function handleOptions(request) {
 }
 
 async function handleEvent(event) {
-
   try {
     const page = await getAssetFromKV(event, { mapRequestToAsset: serveSinglePageApp });
 

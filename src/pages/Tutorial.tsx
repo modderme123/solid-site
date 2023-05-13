@@ -87,23 +87,23 @@ const DirectoryMenu: Component<DirectoryMenuProps> = (props) => {
   return (
     <>
       <button
-        class="py-2 px-10 flex items-center focus:outline-none space-x-1 group"
+        class="group flex items-center space-x-1 px-10 py-2 focus:outline-none"
         ref={menuButton}
       >
-        <div class="flex-grow inline-flex flex-col items-baseline">
-          <h3 class="text-xl text-solid leading-none">{props.current?.lessonName}</h3>
+        <div class="inline-flex flex-grow flex-col items-baseline">
+          <h3 class="text-solid text-xl leading-none">{props.current?.lessonName}</h3>
         </div>
 
         <Icon
           path={chevronDown}
-          class="h-8 -mb-1 transform transition group-hover:translate-y-0.5 duration-300"
+          class="-mb-1 h-8 transform transition duration-300 group-hover:translate-y-0.5"
           classList={{ 'translate-y-0.5': showDirectory() }}
         />
       </button>
       <Dismiss menuButton={menuButton} open={showDirectory} setOpen={setShowDirectory}>
         <ol
           ref={listContainer}
-          class="shadow-lg rounded-br-lg rounded-bl-lg absolute bg-white dark:bg-solid-darkLighterBg w-64 max-h-[50vh] left-8 overflow-auto rounded-b space-y-3 z-10"
+          class="absolute left-8 z-10 max-h-[50vh] w-64 space-y-3 overflow-auto rounded-b rounded-bl-lg rounded-br-lg bg-white shadow-lg dark:bg-solid-darkLighterBg"
           classList={{ hidden: !showDirectory() }}
         >
           <li class="sticky top-0">
@@ -116,7 +116,7 @@ const DirectoryMenu: Component<DirectoryMenuProps> = (props) => {
               type="search"
               placeholder="Search..."
               autocomplete="off"
-              class="py-2 px-3 block w-full text-black"
+              class="block w-full px-3 py-2 text-black"
             />
           </li>
           <For each={filteredDirectory()}>
@@ -126,14 +126,14 @@ const DirectoryMenu: Component<DirectoryMenuProps> = (props) => {
                   {sectionIndex() + 1}. {section}
                 </p>
 
-                <ul class="divide-y divide-gray-500 box-border">
+                <ul class="box-border divide-y divide-gray-500">
                   <For each={entries}>
                     {(entry, entryIndex) => (
                       <li>
                         <NavLink
                           activeClass="js-active bg-blue-50 dark:bg-solid-darkbg"
                           href={`/tutorial/${entry.internalName}`}
-                          class="hover:bg-blue-100 dark:hover:bg-solid-medium py-3 px-5 block"
+                          class="block px-5 py-3 hover:bg-blue-100 dark:hover:bg-solid-medium"
                         >
                           <p class="text-sm font-medium text-gray-900 dark:text-gray-200">
                             {alphabet[entryIndex()]}. {entry.lessonName}
@@ -191,17 +191,17 @@ const Tutorial: Component = () => {
     <Suspense fallback={<p>Loading...</p>}>
       <div
         dir="ltr"
-        class="md:grid transition-all duration-300 h-[calc(100vh-64px)]"
+        class="h-[calc(100vh-64px)] transition-all duration-300 md:grid"
         classList={{
           'grid-cols-[minmax(40%,_600px)_auto]': open(),
           'grid-cols-[minmax(100%,_600px)_auto]': !open(),
         }}
       >
-        <div class="flex flex-col bg-gray-50 dark:bg-solid-darkbg h-full overflow-hidden border-r-2 dark:border-solid-darkLighterBg border-grey mb-10 md:mb-0 ">
-          <div class="box-border pt-3 pb-2 rounded-t border-b-2 border-solid bg-white dark:bg-solid-darkLighterBg dark:border-solid-darkLighterBg">
+        <div class="border-grey mb-10 flex h-full flex-col overflow-hidden border-r-2 bg-gray-50 dark:border-solid-darkLighterBg dark:bg-solid-darkbg md:mb-0 ">
+          <div class="box-border rounded-t border-b-2 border-solid bg-white pb-2 pt-3 dark:border-solid-darkLighterBg dark:bg-solid-darkLighterBg">
             <button
               type="button"
-              class="hidden md:block mr-5 mt-1 float-right"
+              class="float-right mr-5 mt-1 hidden md:block"
               onClick={() => setOpen(!open())}
             >
               <Icon
@@ -218,18 +218,18 @@ const Tutorial: Component = () => {
           <Show when={data.markdown} fallback={''}>
             <div
               ref={markDownRef}
-              class="p-10 prose dark:prose-invert flex-1 max-w-full overflow-auto"
+              class="prose max-w-full flex-1 overflow-auto p-10 dark:prose-invert"
             >
               {data.markdown}
             </div>
           </Show>
 
-          <div class="py-4 px-10 flex items-center justify-between border-t-2 dark:border-solid-darkLighterBg">
+          <div class="flex items-center justify-between border-t-2 px-10 py-4 dark:border-solid-darkLighterBg">
             <Show
               when={data.solved}
               fallback={
                 <NavLink
-                  class="inline-flex py-2 px-3 bg-solid-default hover:bg-solid-medium text-white rounded"
+                  class="inline-flex rounded bg-solid-default px-3 py-2 text-white hover:bg-solid-medium"
                   href={`/tutorial/${data.id}?solved`}
                   onClick={() => setOpen(true)}
                 >
@@ -238,7 +238,7 @@ const Tutorial: Component = () => {
               }
             >
               <NavLink
-                class="inline-flex py-2 px-3 bg-solid-default hover:bg-solid-medium text-white rounded"
+                class="inline-flex rounded bg-solid-default px-3 py-2 text-white hover:bg-solid-medium"
                 href={`/tutorial/${data.id}`}
                 onClick={() => setOpen(true)}
               >

@@ -34,31 +34,31 @@ const AResource: Component<Resource> = (props) => {
   };
 
   return (
-    <li class="py-6 border-b text-left dark:border-solid-darkLighterBg hover:bg-gray-50 dark:hover:bg-gray-700 duration-100">
+    <li class="border-b py-6 text-left duration-100 hover:bg-gray-50 dark:border-solid-darkLighterBg dark:hover:bg-gray-700">
       <a
-        class="relative grid grid-cols-10 md:grid-cols-12 grid-flow-col gap-2 text-solid"
+        class="text-solid relative grid grid-flow-col grid-cols-10 gap-2 md:grid-cols-12"
         target="_blank"
         href={props.link}
         rel="nofollow"
       >
-        <div class="col-span-2 md:col-span-3 lg:col-span-1 flex items-center justify-center">
-          <figure class="flex justify-center content-center w-11 h-11 md:w-14 md:h-14 p-1.5 border-4 border-solid-medium dark:border-solid-darkdefault rounded-full text-white flex-shrink-0">
+        <div class="col-span-2 flex items-center justify-center md:col-span-3 lg:col-span-1">
+          <figure class="flex h-11 w-11 flex-shrink-0 content-center justify-center rounded-full border-4 border-solid-medium p-1.5 text-white dark:border-solid-darkdefault md:h-14 md:w-14">
             <Icon
-              class="text-solid-medium dark:text-solid-darkdefault w-5/6"
+              class="w-5/6 text-solid-medium dark:text-solid-darkdefault"
               path={ResourceTypeIcons[props.type]}
             />
           </figure>
         </div>
-        <div class="col-start-3 col-end-[-1] md:col-span-7 lg:col-span-10 items-center">
+        <div class="col-start-3 col-end-[-1] items-center md:col-span-7 lg:col-span-10">
           <div dir="ltr">
             <div class="text-lg">{props.title}</div>
             <Show when={props.description != ''}>
-              <div class="text-xs mt-2 text-black dark:text-white mb-3 block">
+              <div class="mb-3 mt-2 block text-xs text-black dark:text-white">
                 {props.description}
               </div>
             </Show>
             <Show when={props.author && !props.author_url}>
-              <div class="text-xs mt-3 text-gray-500 dark:text-gray-300 block">
+              <div class="mt-3 block text-xs text-gray-500 dark:text-gray-300">
                 {t('resources.by')} {props.author}
               </div>
             </Show>
@@ -69,13 +69,13 @@ const AResource: Component<Resource> = (props) => {
                 rel="noopener"
                 href={props.author_url}
                 target="_blank"
-                class="text-xs text-gray-500 dark:text-gray-300 inline hover:text-solid-medium"
+                class="inline text-xs text-gray-500 hover:text-solid-medium dark:text-gray-300"
               >
                 {t('resources.by')} {props.author}
               </a>
             </div>
             <Show when={props.published_at}>
-              <div class="rtl:text-right text-xs text-gray-400 block">
+              <div class="block text-xs text-gray-400 rtl:text-right">
                 {t('resources.published', {}, 'Published')} {published.toDateString()}
                 <Show when={days! < 60}>
                   <span class="text-gray-300"> - {publish_detail()}</span>
@@ -84,15 +84,15 @@ const AResource: Component<Resource> = (props) => {
             </Show>
           </Show>
         </div>
-        <div class="absolute top-[-18px] right-0 text-[14px] md:text-base md:static col-span-1 flex items-center text-solid-light">
+        <div class="absolute right-0 top-[-18px] col-span-1 flex items-center text-[14px] text-solid-light md:static md:text-base">
           <Show when={props.official}>
-            <Icon class="relative top-[-2px] w-4 md:top-0 md:w-7 mr-2" path={shieldCheck} />
+            <Icon class="relative top-[-2px] mr-2 w-4 md:top-0 md:w-7" path={shieldCheck} />
             {t('resources.official')}
           </Show>
         </div>
-        <div class="hidden col-span-2 lg:col-span-1 md:flex justify-end">
-          <Icon class="ltr:hidden w-7 mx-2 text-gray-400" path={chevronLeft} />
-          <Icon class="rtl:hidden w-7 mx-2 text-gray-400" path={chevronRight} />
+        <div class="col-span-2 hidden justify-end md:flex lg:col-span-1">
+          <Icon class="mx-2 w-7 text-gray-400 ltr:hidden" path={chevronLeft} />
+          <Icon class="mx-2 w-7 text-gray-400 rtl:hidden" path={chevronRight} />
         </div>
       </a>
     </li>
@@ -171,23 +171,23 @@ const Resources: Component = () => {
   };
 
   return (
-    <div class="flex flex-col relative">
-      <div class="md:grid md:grid-cols-12 container p-5 gap-6 relative">
-        <div class="py-5 md:col-span-5 lg:col-span-3 md:overflow-auto md:p-5 md:sticky md:top-20 rounded md:h-[calc(100vh-80px)]">
+    <div class="relative flex flex-col">
+      <div class="container relative gap-6 p-5 md:grid md:grid-cols-12">
+        <div class="rounded py-5 md:sticky md:top-20 md:col-span-5 md:h-[calc(100vh-80px)] md:overflow-auto md:p-5 lg:col-span-3">
           <div
-            class="text-xs bg-gray-100 dark:bg-solid-darkLighterBg p-4 rounded"
+            class="rounded bg-gray-100 p-4 text-xs dark:bg-solid-darkLighterBg"
             innerHTML={t('resources.cta')}
           ></div>
           <div class="hidden md:block">
             <input
-              class="my-5 rounded border-solid w-full border-gray-400 border bg-transparent p-3 placeholder-opacity-50 placeholder-gray-500 dark:placeholder-white"
+              class="my-5 w-full rounded border border-solid border-gray-400 bg-transparent p-3 placeholder-gray-500 placeholder-opacity-50 dark:placeholder-white"
               placeholder={t('resources.search')}
               value={keyword()}
               onInput={(evt) => debouncedKeyword(evt.currentTarget.value)}
               onChange={(evt) => setKeyword(evt.currentTarget.value)}
               type="text"
             />
-            <h3 class="text-xl text-solid-default dark:text-solid-darkdefault dark:border-solid-darkLighterBg border-b mb-4 font-semibold border-solid pb-2">
+            <h3 class="mb-4 border-b border-solid pb-2 text-xl font-semibold text-solid-default dark:border-solid-darkLighterBg dark:text-solid-darkdefault">
               {t('resources.types')}
             </h3>
             <div class="flex flex-col space-y-2">
@@ -213,12 +213,12 @@ const Resources: Component = () => {
                       'hover:opacity-60': !!filtered.counts[type],
                       'bg-gray-100 dark:bg-gray-700': filtered.enabledTypes.indexOf(type) !== -1,
                     }}
-                    class="grid grid-cols-5 lg:grid-cols-6 items-center w-full text-sm py-3 text-left border rounded-md dark:border-solid-darkLighterBg"
+                    class="grid w-full grid-cols-5 items-center rounded-md border py-3 text-left text-sm dark:border-solid-darkLighterBg lg:grid-cols-6"
                   >
-                    <div class="col-span-1 lg:col-span-2 flex justify-center px-2">
-                      <figure class="flex justify-center content-center w-10 h-10 p-1.5 border-4 border-solid rounded-full text-white flex-shrink-0">
+                    <div class="col-span-1 flex justify-center px-2 lg:col-span-2">
+                      <figure class="flex h-10 w-10 flex-shrink-0 content-center justify-center rounded-full border-4 border-solid p-1.5 text-white">
                         <Icon
-                          class="text-solid-medium dark:text-solid-darkdefault w-5/6"
+                          class="w-5/6 text-solid-medium dark:text-solid-darkdefault"
                           path={ResourceTypeIcons[type]}
                         />
                       </figure>
@@ -226,7 +226,7 @@ const Resources: Component = () => {
                     <div class="col-span-3 rtl:text-right lg:col-span-3">
                       {t(`resources.types_list.${name.toLowerCase()}`, {}, name)}
                     </div>
-                    <div class="col-span-1 text-center flex-end text-gray-400 text-xs">
+                    <div class="flex-end col-span-1 text-center text-xs text-gray-400">
                       <Show when={filtered.counts[type]} fallback={0}>
                         {filtered.counts[type]}
                       </Show>
@@ -238,18 +238,18 @@ const Resources: Component = () => {
           </div>
         </div>
 
-        <div class="md:hidden sticky z-10 top-[60px] py-3 pt-4 bg-white w-[calc(100%+40px)] -ml-5">
+        <div class="sticky top-[60px] z-10 -ml-5 w-[calc(100%+40px)] bg-white py-3 pt-4 md:hidden">
           <div
-            class="absolute h-full top-0 left-3 right-3 rounded-[12%] bg-white z-negative"
+            class="absolute left-3 right-3 top-0 z-negative h-full rounded-[12%] bg-white"
             classList={{
               'shadow-md': stickyBarActive(),
             }}
           ></div>
-          <div class="absolute w-full h-full top-0 left-0 bg-white dark:bg-neutral-600 z-negative"></div>
-          <div class="h-[45px] px-5 flex justify-between gap-1">
+          <div class="absolute left-0 top-0 z-negative h-full w-full bg-white dark:bg-neutral-600"></div>
+          <div class="flex h-[45px] justify-between gap-1 px-5">
             <div use:intersectionObserver class="absolute top-[-62px] h-0" />
             <input
-              class="rounded border border-solid h-full w-full border-gray-400 p-3 placeholder-opacity-50 placeholder-gray-500 dark:bg-gray-500 dark:placeholder-gray-200"
+              class="h-full w-full rounded border border-solid border-gray-400 p-3 placeholder-gray-500 placeholder-opacity-50 dark:bg-gray-500 dark:placeholder-gray-200"
               placeholder={t('resources.search')}
               value={keyword()}
               onInput={(evt) => debouncedKeyword(evt.currentTarget.value)}
@@ -257,7 +257,7 @@ const Resources: Component = () => {
               type="text"
             />
             <button
-              class="lg:hidden h-full w-[45px] flex-shrink-0 border-gray-300 border rounded-lg flex justify-center items-center text-solid-medium dark:text-solid-darkdefault"
+              class="flex h-full w-[45px] flex-shrink-0 items-center justify-center rounded-lg border border-gray-300 text-solid-medium dark:text-solid-darkdefault lg:hidden"
               onClick={onClickFiltersBtn}
               ref={menuButton}
             >
@@ -280,11 +280,11 @@ const Resources: Component = () => {
         >
           <div
             class={
-              'fixed top-14 left-0 z-20 py-5 w-full rounded-t-2xl overflow-auto  p-10 shadow-top-2xl border-2 border-gray-100 dark:bg-solid-gray bg-white transition-transform duration-300 lg:border-0 lg:shadow-none lg:p-0 lg:flex-col lg:top-12 lg:sticky lg:flex '
+              'fixed left-0 top-14 z-20 w-full overflow-auto rounded-t-2xl border-2  border-gray-100 bg-white p-10 py-5 shadow-top-2xl transition-transform duration-300 dark:bg-solid-gray lg:sticky lg:top-12 lg:flex lg:flex-col lg:border-0 lg:p-0 lg:shadow-none '
             }
             style={{ height: 'calc(100vh - 8rem)', top: '8rem' }}
           >
-            <h3 class="text-xl text-solid-default dark:text-solid-darkdefault border-b mb-4 font-semibold border-solid pb-2">
+            <h3 class="mb-4 border-b border-solid pb-2 text-xl font-semibold text-solid-default dark:text-solid-darkdefault">
               {t('resources.types')}
             </h3>
             <div class="flex flex-col space-y-2">
@@ -310,12 +310,12 @@ const Resources: Component = () => {
                       'hover:opacity-60': !!filtered.counts[type],
                       'bg-gray-100 dark:bg-gray-700': filtered.enabledTypes.indexOf(type) !== -1,
                     }}
-                    class="grid grid-cols-5 lg:grid-cols-6 items-center w-full text-sm py-3 text-left border rounded-md"
+                    class="grid w-full grid-cols-5 items-center rounded-md border py-3 text-left text-sm lg:grid-cols-6"
                   >
-                    <div class="col-span-1 lg:col-span-2 flex justify-center px-2">
-                      <figure class="flex justify-center content-center w-10 h-10 p-1.5 border-4 border-solid rounded-full text-white">
+                    <div class="col-span-1 flex justify-center px-2 lg:col-span-2">
+                      <figure class="flex h-10 w-10 content-center justify-center rounded-full border-4 border-solid p-1.5 text-white">
                         <Icon
-                          class="text-solid-medium dark:text-solid-darkdefault w-5/6"
+                          class="w-5/6 text-solid-medium dark:text-solid-darkdefault"
                           path={ResourceTypeIcons[type]}
                         />
                       </figure>
@@ -323,7 +323,7 @@ const Resources: Component = () => {
                     <div class="col-span-3 rtl:text-right lg:col-span-3">
                       {t(`resources.types_list.${name.toLowerCase()}`, {}, name)}
                     </div>
-                    <div class="col-span-1 text-center flex-end text-gray-400 text-xs">
+                    <div class="flex-end col-span-1 text-center text-xs text-gray-400">
                       <Show when={filtered.counts[type]} fallback={0}>
                         {filtered.counts[type]}
                       </Show>

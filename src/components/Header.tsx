@@ -62,28 +62,28 @@ const Header: ParentComponent<{ title?: string }> = () => {
         <Show when={showHeaderSplash()}>
           <header
             id="header"
-            class="relative mx-2 rounded-br-3xl rounded-bl-3xl bg-gradient-to-r from-solid-light via-solid-medium/85 to-solid-dark/80 dark:from-solid-light/40 dark:via-solid-medium/80 dark:to-solid-medium/90 text-white overflow-hidden z-[1]"
+            class="via-solid-medium/85 relative z-[1] mx-2 overflow-hidden rounded-bl-3xl rounded-br-3xl bg-gradient-to-r from-solid-light to-solid-dark/80 text-white dark:from-solid-light/40 dark:via-solid-medium/80 dark:to-solid-medium/90"
           >
             <PageLoadingBar active={routeReadyState().loadingBar} postion="bottom"></PageLoadingBar>
             <a
               target="_blank"
               href={t('home.ukraine.link', {}, 'https://www.un.org/en/globalceasefire')}
-              class="absolute w-full text-center text-[15px] p-3 bg-yellow-500 hover:bg-yellow-500/80 transition duration-200"
-            >              
+              class="absolute w-full bg-yellow-500 p-3 text-center text-[15px] transition duration-200 hover:bg-yellow-500/80"
+            >
               <b>{t('home.ukraine.support', {}, 'Support Global Ceasefire!')}</b>&nbsp;
               {t('home.ukraine.petition', {}, 'End war in Ukraine and all global conflict →')}
             </a>
-            <div class="md:bg-hero dark:from-bg-gray-700 bg-no-repeat bg-right rtl:bg-left px-10">
+            <div class="dark:from-bg-gray-700 bg-right bg-no-repeat px-10 rtl:bg-left md:bg-hero">
               <a target="_blank" href="https://www.youtube.com/watch?v=pFah4QqiUAg&t=9503s">
                 <img
-                  class="hidden md:block absolute md:top-20 lg:top-32 md:right-20 md:w-40 lg:w-72"
+                  class="absolute hidden md:right-20 md:top-20 md:block md:w-40 lg:top-32 lg:w-72"
                   src="/img/award-badge.svg"
                 />
               </a>
-              <section class="px-3 lg:px-12 container space-y-10 lg:pb-20 lg:pt-52 py-10">
-                <div class="flex items-center mt-10 w-[calc(100%+40px)] space-y-4 lg:space-y-0 lg:space-x-4 lg:mt-0">
+              <section class="container space-y-10 px-3 py-10 lg:px-12 lg:pb-20 lg:pt-52">
+                <div class="mt-10 flex w-[calc(100%+40px)] items-center space-y-4 lg:mt-0 lg:space-x-4 lg:space-y-0">
                   <img
-                    class="w-[6rem] h-30 lg:w-48"
+                    class="h-30 w-[6rem] lg:w-48"
                     style="filter: drop-shadow(-10px 4px 8px rgb(0 22 100 / 10%))"
                     src={logo}
                     alt="Solid logo"
@@ -91,21 +91,21 @@ const Header: ParentComponent<{ title?: string }> = () => {
                     height="155.3"
                   />
                   <img
-                    class="w-52 min-w-0 h-15 lg:w-80"
+                    class="h-15 w-52 min-w-0 lg:w-80"
                     src={wordmark}
                     alt="Solid wordmark"
                     width="306.42"
                     height="70.7"
                   />
                 </div>
-                <h2 class="lg:font-semibold text-[26px] sm:text-3xl leading-8 lg:text-4xl lg:leading-10 xl:max-w-3xl">
+                <h2 class="text-[26px] leading-8 sm:text-3xl lg:text-4xl lg:font-semibold lg:leading-10 xl:max-w-3xl">
                   {t('home.hero')}
                 </h2>
-                <div class="space-y-2 md:flex md:space-y-0 md:space-x-2">
+                <div class="space-y-2 md:flex md:space-x-2 md:space-y-0">
                   <div>
                     <Link
                       href="/guides/getting-started"
-                      class="bg-solid-medium flex justify-center items-center px-5 py-3 text-md rounded-lg  hover:bg-solid-gray transition"
+                      class="text-md flex items-center justify-center rounded-lg bg-solid-medium px-5 py-3  transition hover:bg-solid-gray"
                     >
                       <span class="mt-0.5">{t('home.get_started', {}, 'Get Started')}</span>
                       <Icon stroke-width="3" class="w-5" path={chevronRight} />
@@ -115,9 +115,9 @@ const Header: ParentComponent<{ title?: string }> = () => {
                     <Link
                       target="_blank"
                       href="https://www.youtube.com/watch?v=hw3Bx5vxKl0"
-                      class="bg-solid-light flex items-center px-5 py-3 text-md rounded-lg hover:bg-solid-gray transition"
+                      class="text-md flex items-center rounded-lg bg-solid-light px-5 py-3 transition hover:bg-solid-gray"
                     >
-                      <Icon stroke-width="2" class="w-6 mr-2" path={play} />
+                      <Icon stroke-width="2" class="mr-2 w-6" path={play} />
                       {t('home.intro_video', {}, 'Intro to Solid (100 seconds)')}
                     </Link>
                     {/* <Link
@@ -140,8 +140,8 @@ const Header: ParentComponent<{ title?: string }> = () => {
         <Transition onBeforeEnter={onEnterSmallHeader} onExit={onExitSmallHeader}>
           <Show when={showHeaderSmall() && !location.pathname.includes('/hack')}>
             <header class="overflow-hidden">
-              <div class="bg-gradient-to-r from-solid-light via-solid-medium to-solid-medium/80 dark:from-solid-light/70 dark:via-solid-medium/70 dark:to-solid-medium/40 text-white text-center md:text-left rtl:text-right">
-                <div class="px-3 lg:px-12 container">
+              <div class="bg-gradient-to-r from-solid-light via-solid-medium to-solid-medium/80 text-center text-white rtl:text-right dark:from-solid-light/70 dark:via-solid-medium/70 dark:to-solid-medium/40 md:text-left">
+                <div class="container px-3 lg:px-12">
                   <h1 class="py-8 text-3xl">
                     <Transition
                       enterClass="translate-x-5 opacity-0"

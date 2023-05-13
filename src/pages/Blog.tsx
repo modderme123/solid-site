@@ -14,21 +14,21 @@ const Blog: Component = () => {
 
   return (
     <div class="flex flex-col">
-      <div class="my-2 lg:my-10 pt-5 pb-10 px-3 lg:px-12 container">
-        <div class="mb-10 lg:flex justify-center">
+      <div class="container my-2 px-3 pb-10 pt-5 lg:my-10 lg:px-12">
+        <div class="mb-10 justify-center lg:flex">
           <div class="space-y-10">
             <For each={sortedArticles}>
               {([id, article]) => (
                 <NavLink
                   href={`/blog/${id}`}
-                  class="block px-3 lg:px-0 text-md mx-auto mb-10 pb-10 text-center"
+                  class="text-md mx-auto mb-10 block px-3 pb-10 text-center lg:px-0"
                 >
-                  <img class="lg:w-4/6 mx-auto rounded-md mb-10 shadow-md" src={article.img} />
-                  <h1 class="text-xl lg:text-2xl mb-3 font-semibold text-solid-medium dark:text-solid-darkdefault">
+                  <img class="mx-auto mb-10 rounded-md shadow-md lg:w-4/6" src={article.img} />
+                  <h1 class="mb-3 text-xl font-semibold text-solid-medium dark:text-solid-darkdefault lg:text-2xl">
                     {article.title}
                   </h1>
                   <span class="text-md">{article.description}</span>
-                  <div class="text-xs mt-3">
+                  <div class="mt-3 text-xs">
                     By {article.author} on {new Date(article.date).toDateString()}
                   </div>
                 </NavLink>

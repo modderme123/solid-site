@@ -20,14 +20,14 @@ const CoreMember: Component<CoreMemberProps> = (props) => {
       <div>
         <span class="sr-only">Profile picture of {props.name}</span>
         <img
-          class="shadow-lg rounded-md w-full"
+          class="w-full rounded-md shadow-lg"
           alt="Profile headshot"
           src={`/img/bios/${props.img}`}
         />
       </div>
 
-      <div class="space-y-4 col-span-2 flex flex-col items-start">
-        <span class="text-bold text-xl block text-solid">{props.name}</span>
+      <div class="col-span-2 flex flex-col items-start space-y-4">
+        <span class="text-bold text-solid block text-xl">{props.name}</span>
         <hr class="self-stretch" />
         <small>{props.role}</small>
         <p class="block">{props.bio}</p>
@@ -49,11 +49,11 @@ interface ContributorProps {
 
 const Contributor: Component<ContributorProps> = (props) => {
   return (
-    <li class="shadow-even-md-light p-7 rounded dark:shadow-even-md-dark">
-      <p class="text-bold text-lg text-solid inline-flex space-x-2">
+    <li class="rounded p-7 shadow-even-md-light dark:shadow-even-md-dark">
+      <p class="text-bold text-solid inline-flex space-x-2 text-lg">
         <span>{props.name}</span>
         <Show when={props.company}>
-          <a href={props.link} class="text-black dark:text-gray-400 hover:underline">
+          <a href={props.link} class="text-black hover:underline dark:text-gray-400">
             ({props.company})
           </a>
         </Show>
@@ -70,9 +70,9 @@ const Contributors: Component = () => {
   useRouteReadyState();
 
   return (
-    <div class="flex flex-col relative">
-      <div class="px-3 lg:px-12 container my-10">
-        <div class="lg:grid my-8 lg:grid-cols-12 space-y-10 gap-20">
+    <div class="relative flex flex-col">
+      <div class="container my-10 px-3 lg:px-12">
+        <div class="my-8 gap-20 space-y-10 lg:grid lg:grid-cols-12">
           <div class="col-span-6 flex flex-col space-y-10">
             <h2 class="text-3xl font-semibold text-solid-default dark:text-solid-darkdefault">
               {t('contributors.core_team', {}, 'Core Team')}
@@ -101,8 +101,8 @@ const Contributors: Component = () => {
             <ul class="flex flex-col space-y-3">
               <For each={data.contributors} children={Contributor} />
             </ul>
-            <div class="flex mb-5 flex-col space-y-3">
-              <h2 class="text-2xl mb-5 font-semibold text-solid-default dark:text-solid-darkdefault">
+            <div class="mb-5 flex flex-col space-y-3">
+              <h2 class="mb-5 text-2xl font-semibold text-solid-default dark:text-solid-darkdefault">
                 {t('contributors.contributors', {}, 'Contributors')}
               </h2>
               <a target="_blank" href="https://github.com/solidjs/solid/graphs/contributors">
@@ -118,7 +118,7 @@ const Contributors: Component = () => {
                 {},
                 'The following individuals have graciously given their time and effort to ensure Solid goes international:',
               )}
-              <ul class="list-disc ml-8 space-y-3 mt-4">
+              <ul class="ml-8 mt-4 list-disc space-y-3">
                 <For each={data.translators}>
                   {(translator) => (
                     <li>
@@ -131,10 +131,10 @@ const Contributors: Component = () => {
               </ul>
             </div>
             <div>
-              <h2 class="text-2xl mb-5 font-semibold text-solid-default dark:text-solid-darkdefault">
+              <h2 class="mb-5 text-2xl font-semibold text-solid-default dark:text-solid-darkdefault">
                 Open Collective
               </h2>
-              <div class="inline-block mb-10">
+              <div class="mb-10 inline-block">
                 {t(
                   'contributors.support_copy',
                   {},

@@ -34,18 +34,18 @@ const FilterButton: Component<{
         'opacity-20 cursor-default': !props.active,
         'hover:opacity-60': props.active,
       }}
-      class="flex items-center w-full text-sm px-4 py-2 min-h-[50px] text-left border border-gray-400 rounded"
+      class="flex min-h-[50px] w-full items-center rounded border border-gray-400 px-4 py-2 text-left text-sm"
     >
       <Show when={props.type}>
-        <figure class="flex justify-center content-center -ml-2 mr-2 w-10 h-10 p-1.5 border-4 border-solid rounded-full text-white flex-shrink-0">
+        <figure class="-ml-2 mr-2 flex h-10 w-10 flex-shrink-0 content-center justify-center rounded-full border-4 border-solid p-1.5 text-white">
           <Icon
-            class="text-solid-medium dark:text-solid-darkdefault w-5/6"
+            class="w-5/6 text-solid-medium dark:text-solid-darkdefault"
             path={ResourceTypeIcons[props.type!]}
           />
         </figure>
       </Show>
       <span>{props.name}</span>
-      <span class="ml-auto text-center flex-end text-gray-400 text-xs">{props.count}</span>
+      <span class="flex-end ml-auto text-center text-xs text-gray-400">{props.count}</span>
     </button>
   </>
 );
@@ -82,36 +82,36 @@ const ResourceLink: Component<Resource> = (props) => {
       target="_blank"
       href={props.link}
       rel="nofollow"
-      class="border border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded px-3.5 py-3 min-h-[144px] flex flex-col"
+      class="flex min-h-[144px] flex-col rounded border border-gray-400 px-3.5 py-3 hover:bg-gray-50 dark:hover:bg-gray-700"
     >
       <div class="flex items-center">
-        <figure class="flex justify-center content-center w-10 h-10 md:w-14 md:h-14 p-1.5 border-4 border-solid-medium rounded-full text-white flex-shrink-0">
+        <figure class="flex h-10 w-10 flex-shrink-0 content-center justify-center rounded-full border-4 border-solid-medium p-1.5 text-white md:h-14 md:w-14">
           <Icon
-            class="text-solid-medium dark:text-solid-darkdefault w-5/6"
+            class="w-5/6 text-solid-medium dark:text-solid-darkdefault"
             path={ResourceTypeIcons[props.type]}
           />
         </figure>
-        <h1 class="pl-3 break-all">{props.title}</h1>
+        <h1 class="break-all pl-3">{props.title}</h1>
         <Icon
-          class="min-w-[28px] w-7 self-start ml-auto text-solid-default dark:text-solid-darkdefault"
+          class="ml-auto w-7 min-w-[28px] self-start text-solid-default dark:text-solid-darkdefault"
           path={arrowTopRightOnSquare}
         />
       </div>
-      <p class="text-xs py-2">{props.description}</p>
-      <div class="mt-auto flex items-center place-content-between">
+      <p class="py-2 text-xs">{props.description}</p>
+      <div class="mt-auto flex place-content-between items-center">
         <div>
           <Show when={props.author && props.author_url}>
             <a
               rel="noopener"
               href={props.author_url}
               target="_blank"
-              class="text-xs text-gray-500 dark:text-gray-300 inline hover:text-solid-medium"
+              class="inline text-xs text-gray-500 hover:text-solid-medium dark:text-gray-300"
             >
               {t('resources.by')} {props.author}
             </a>
           </Show>
           <Show when={props.published_at}>
-            <div class="rtl:text-right text-xs text-gray-400 block">
+            <div class="block text-xs text-gray-400 rtl:text-right">
               {t('resources.published', {}, 'Published')} {published.toDateString()}
               <Show when={days! < 60}>
                 <span class="text-gray-300"> - {publish_detail()}</span>
@@ -121,8 +121,8 @@ const ResourceLink: Component<Resource> = (props) => {
         </div>
 
         <Show when={props.official}>
-          <div class="flex rounded bg-solid-light dark:bg-solid-default text-white font-medium w-min p-1 pr-2 self-end">
-            <Icon class="w-4 mr-1" path={shieldCheck} />
+          <div class="flex w-min self-end rounded bg-solid-light p-1 pr-2 font-medium text-white dark:bg-solid-default">
+            <Icon class="mr-1 w-4" path={shieldCheck} />
             <span class="text-xs">{t('resources.official')}</span>
           </div>
         </Show>
@@ -206,11 +206,11 @@ const Packages: Component = () => {
       aside={
         <div class="lg:m-6">
           <div
-            class="text-xs dark:bg-solid-darkLighterBg p-4 rounded border border-gray-400"
+            class="rounded border border-gray-400 p-4 text-xs dark:bg-solid-darkLighterBg"
             innerHTML={t('resources.cta')}
           />
           <input
-            class="my-5 rounded border-solid w-full border border-gray-400 bg-white dark:bg-solid-darkgray p-3 placeholder-opacity-50 placeholder-gray-500 dark:placeholder-white"
+            class="my-5 w-full rounded border border-solid border-gray-400 bg-white p-3 placeholder-gray-500 placeholder-opacity-50 dark:bg-solid-darkgray dark:placeholder-white"
             placeholder={t('resources.search')}
             value={keyword()}
             onInput={(evt) => debouncedKeyword(evt.currentTarget.value)}
@@ -220,7 +220,7 @@ const Packages: Component = () => {
 
           <FilterOfficial active={check()} onChange={toggleOfficial} />
 
-          <h3 class="text-xl mt-8 text-solid-default dark:text-solid-darkdefault border-b dark:border-gray-500 font-semibold border-solid pb-2">
+          <h3 class="mt-8 border-b border-solid pb-2 text-xl font-semibold text-solid-default dark:border-gray-500 dark:text-solid-darkdefault">
             {t('resources.categories')}
           </h3>
           <div class="mt-3 space-y-2">
@@ -241,12 +241,12 @@ const Packages: Component = () => {
         <>
           <div use:intersectionObserver class="absolute top-0" />
           <div
-            class="block lg:hidden text-xs bg-gray-100 dark:bg-solid-darkLighterBg p-4 rounded"
+            class="block rounded bg-gray-100 p-4 text-xs dark:bg-solid-darkLighterBg lg:hidden"
             innerHTML={t('resources.cta')}
           />
-          <div class="block lg:hidden sticky top-16 bg-white dark:bg-solid-darkbg">
+          <div class="sticky top-16 block bg-white dark:bg-solid-darkbg lg:hidden">
             <input
-              class="mt-14 sm:mt-5 mb-3 rounded border-solid w-full border border-gray-400 bg-white dark:bg-solid-darkgray p-3 placeholder-opacity-50 placeholder-gray-500 dark:placeholder-white mr-3"
+              class="mb-3 mr-3 mt-14 w-full rounded border border-solid border-gray-400 bg-white p-3 placeholder-gray-500 placeholder-opacity-50 dark:bg-solid-darkgray dark:placeholder-white sm:mt-5"
               placeholder={t('resources.search')}
               value={keyword()}
               onInput={(evt) => debouncedKeyword(evt.currentTarget.value)}
@@ -269,7 +269,7 @@ const Packages: Component = () => {
               {([category, resources]) => (
                 <>
                   <h3
-                    class="text-2xl mt-8 first-of-type:mt-0 mb-5 text-solid-default dark:text-solid-darkdefault dark:border-solid-darkLighterBg border-b font-semibold border-solid pb-2"
+                    class="mb-5 mt-8 border-b border-solid pb-2 text-2xl font-semibold text-solid-default first-of-type:mt-0 dark:border-solid-darkLighterBg dark:text-solid-darkdefault"
                     id={category}
                   >
                     {t(
@@ -278,7 +278,7 @@ const Packages: Component = () => {
                       ResourceCategoryName[category],
                     )}
                   </h3>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <For each={resources}>{(resource) => <ResourceLink {...resource} />}</For>
                   </div>
                 </>
