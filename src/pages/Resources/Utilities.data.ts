@@ -1,4 +1,4 @@
-import { Resource, ResourceCategory, PackageType } from './Ecosystem';
+import { PackageType, Resource, ResourceCategory } from './Ecosystem';
 
 export const utilities: Array<Resource> = [
   {

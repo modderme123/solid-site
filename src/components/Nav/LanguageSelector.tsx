@@ -1,6 +1,6 @@
 import { Icon } from 'solid-heroicons';
-import { language } from 'solid-heroicons/solid';
 import { ParentComponent } from 'solid-js';
+import { language } from 'solid-heroicons/solid';
 
 export const LanguageSelector: ParentComponent<{ ref: HTMLButtonElement }> = (props) => (
   <button

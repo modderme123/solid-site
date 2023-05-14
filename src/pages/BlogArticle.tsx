@@ -1,11 +1,11 @@
 import { Component, Show, createMemo } from 'solid-js';
-import { useI18n } from '@solid-primitives/i18n';
-import { useRouteData, NavLink } from '@solidjs/router';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { NavLink, useRouteData } from '@solidjs/router';
+import { Spotify, Tweet, Twitch, YouTube } from 'solid-social';
+import type { BlogArticleData } from './BlogArticle.data';
 import { Footer } from '../components/Footer';
 import { useAppContext } from '../AppContext';
-import { YouTube, Tweet, Twitch, Spotify } from 'solid-social';
-import type { BlogArticleData } from './BlogArticle.data';
+import { useI18n } from '@solid-primitives/i18n';
+import { useRouteReadyState } from '../utils/routeReadyState';
 
 const BlogArticle: Component = () => {
   const [t] = useI18n();

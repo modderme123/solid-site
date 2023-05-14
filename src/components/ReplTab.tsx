@@ -1,7 +1,7 @@
-import { batch, Component, createSignal, ErrorBoundary } from 'solid-js';
-import { Tab } from 'solid-repl';
-import Repl from 'solid-repl/lib/repl';
+import { Component, ErrorBoundary, batch, createSignal } from 'solid-js';
 import { compiler, formatter, linter } from './setupRepl';
+import Repl from 'solid-repl/lib/repl';
+import { Tab } from 'solid-repl';
 import { useAppContext } from '../AppContext';
 
 let count = 0;

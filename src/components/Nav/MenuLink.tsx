@@ -1,9 +1,9 @@
-import { createEventListener } from '@solid-primitives/event-listener';
-import { NavLink } from '@solidjs/router';
-import { batch, createSignal, onMount, ParentComponent, Show } from 'solid-js';
-import { setRouteReadyState, page, reflow } from '../../utils';
+import { ParentComponent, Show, batch, createSignal, onMount } from 'solid-js';
+import { page, reflow, setRouteReadyState } from '../../utils';
 import { Icon } from 'solid-heroicons';
+import { NavLink } from '@solidjs/router';
 import { arrowTopRightOnSquare } from 'solid-heroicons/solid';
+import { createEventListener } from '@solid-primitives/event-listener';
 
 export type LinkTypes = {
   title: string;

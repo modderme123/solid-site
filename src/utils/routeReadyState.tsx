@@ -1,5 +1,6 @@
-import { useRouteData } from '@solidjs/router';
 import { createComputed, createSignal } from 'solid-js';
+import { useRouteData } from '@solidjs/router';
+
 export const page = {
   scrollY: 0,
 };

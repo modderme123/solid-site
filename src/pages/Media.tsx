@@ -1,9 +1,9 @@
 import { Component, For } from 'solid-js';
-import downloadArrow from '../assets/download-arrow.svg';
 import { Footer } from '../components/Footer';
+import { copyToClipboard } from '@solid-primitives/clipboard';
+import downloadArrow from '../assets/download-arrow.svg';
 import { useI18n } from '@solid-primitives/i18n';
 import { useRouteReadyState } from '../utils/routeReadyState';
-import { copyToClipboard } from '@solid-primitives/clipboard';
 
 const assets = [
   {

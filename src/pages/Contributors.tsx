@@ -1,9 +1,9 @@
 import { Component, For, Show } from 'solid-js';
-import { useRouteData } from '@solidjs/router';
-import github from '../assets/github.svg';
 import { ContributorsDataProps } from './Contributors.data';
 import { Footer } from '../components/Footer';
+import github from '../assets/github.svg';
 import { useI18n } from '@solid-primitives/i18n';
+import { useRouteData } from '@solidjs/router';
 import { useRouteReadyState } from '../utils/routeReadyState';
 
 interface CoreMemberProps {

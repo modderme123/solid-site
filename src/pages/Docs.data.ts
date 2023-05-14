@@ -1,7 +1,7 @@
-import { useLocation } from '@solidjs/router';
+import { DocFile, getApi } from '@solid.js/docs';
 import { createResource } from 'solid-js';
 import { useI18n } from '@solid-primitives/i18n';
-import { DocFile, getApi } from '@solid.js/docs';
+import { useLocation } from '@solidjs/router';
 
 export interface DocData {
   loading: boolean;

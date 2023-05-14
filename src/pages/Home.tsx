@@ -1,33 +1,33 @@
+import { Benchmarks, GraphData } from '../components/Benchmarks';
 import {
   Component,
+  For,
+  Show,
+  Suspense,
+  createEffect,
+  createMemo,
   createSignal,
   lazy,
   onMount,
-  For,
-  Suspense,
-  Show,
-  createMemo,
-  createEffect,
 } from 'solid-js';
-import { Link, useRouteData, useIsRouting } from '@solidjs/router';
-import { useI18n } from '@solid-primitives/i18n';
+import { Link, useIsRouting, useRouteData } from '@solidjs/router';
+import { chevronRight, play } from 'solid-heroicons/outline';
+import { Footer } from '../components/Footer';
+import { Icon } from 'solid-heroicons';
 import { createViewportObserver } from '@solid-primitives/intersection-observer';
+import flag from '../assets/icons/flag.svg';
 import iconBlocks1 from '../assets/icons/blocks1.svg';
 import iconBlocks2 from '../assets/icons/blocks2.svg';
-import flag from '../assets/icons/flag.svg';
-import sandbox from '../assets/icons/sandbox.svg';
+import logo from '../assets/logo.svg';
 import performant from '../assets/icons/performant.svg';
 import powerful from '../assets/icons/powerful.svg';
 import pragmatic from '../assets/icons/pragmatic.svg';
 import productive from '../assets/icons/productive.svg';
+import sandbox from '../assets/icons/sandbox.svg';
 import { shoppingCart } from 'solid-heroicons/outline';
-import { Icon } from 'solid-heroicons';
-import { Footer } from '../components/Footer';
-import { Benchmarks, GraphData } from '../components/Benchmarks';
+import { useI18n } from '@solid-primitives/i18n';
 import { useRouteReadyState } from '../utils/routeReadyState';
-import logo from '../assets/logo.svg';
 import wordmark from '../assets/wordmark.svg';
-import { chevronRight, play } from 'solid-heroicons/outline';
 
 const Repl = lazy(() => import('../components/ReplTab'));
 

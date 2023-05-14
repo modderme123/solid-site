@@ -1,7 +1,7 @@
+import { createCart, createCollection } from '../utils/shopify';
 import { createEffect, on } from 'solid-js';
 import { RouteDataFunc } from '@solidjs/router';
 import { createCookieStorage } from '@solid-primitives/storage';
-import { createCollection, createCart } from '../utils/shopify';
 
 const settings = {
   token: '98a442cbab63cb1697002bfae7dc648a',

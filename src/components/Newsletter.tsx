@@ -1,4 +1,4 @@
-import { Component, createSignal, Show } from 'solid-js';
+import { Component, Show, createSignal } from 'solid-js';
 import { useI18n } from '@solid-primitives/i18n';
 
 const NewsletterState = {

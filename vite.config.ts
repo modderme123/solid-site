@@ -1,9 +1,9 @@
-import { defineConfig, type Plugin } from 'vite';
-import solid from 'vite-plugin-solid';
+import { type Plugin, defineConfig } from 'vite';
 import mdx from '@mdx-js/rollup';
+import pckg from './package.json' assert { type: 'json' };
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
-import pckg from './package.json' assert { type: 'json' };
+import solid from 'vite-plugin-solid';
 
 export default defineConfig({
   define: {

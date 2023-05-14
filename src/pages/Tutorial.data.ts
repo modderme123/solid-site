@@ -1,7 +1,7 @@
-import { useI18n } from '@solid-primitives/i18n';
+import { LessonLookup, getTutorial, getTutorialDirectory } from '@solid.js/docs';
 import { RouteDataFunc } from '@solidjs/router';
 import { createResource } from 'solid-js';
-import { getTutorial, getTutorialDirectory, LessonLookup } from '@solid.js/docs';
+import { useI18n } from '@solid-primitives/i18n';
 
 type JsFiles = {
   files: { name: string; type?: string; content: string }[];

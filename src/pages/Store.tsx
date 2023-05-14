@@ -1,12 +1,12 @@
-import { Component, createMemo, createSignal, For, Show } from 'solid-js';
-import { Footer } from '../components/Footer';
-import { useRouteData } from '@solidjs/router';
-import { useRouteReadyState } from '../utils/routeReadyState';
 import type { CartUtilities, ShopifyProduct } from '../utils/shopify';
-import { Icon } from 'solid-heroicons';
-import { shoppingCart, chevronRight } from 'solid-heroicons/solid';
+import { Component, For, Show, createMemo, createSignal } from 'solid-js';
+import { chevronRight, shoppingCart } from 'solid-heroicons/solid';
 import { minusCircle, plusCircle, xCircle } from 'solid-heroicons/outline';
 import Dismiss from 'solid-dismiss';
+import { Footer } from '../components/Footer';
+import { Icon } from 'solid-heroicons';
+import { useRouteData } from '@solidjs/router';
+import { useRouteReadyState } from '../utils/routeReadyState';
 
 const Product: Component<{ details: ShopifyProduct; cart: CartUtilities }> = (props) => {
   const [current, setCurrent] = createSignal(props.details.variants[0].id);

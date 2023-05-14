@@ -1,9 +1,9 @@
 import {
-  codeBracket,
-  videoCamera,
   bookOpen,
-  microphone,
+  codeBracket,
   commandLine,
+  microphone,
+  videoCamera,
 } from 'solid-heroicons/outline';
 
 export enum ResourceType {

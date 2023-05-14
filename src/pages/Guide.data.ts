@@ -1,8 +1,8 @@
-import { useLocation, RouteDataFunc } from '@solidjs/router';
-import { createResource } from 'solid-js';
-import { useI18n } from '@solid-primitives/i18n';
-import { getDoc } from '@solid.js/docs';
+import { RouteDataFunc, useLocation } from '@solidjs/router';
 import { DocData } from './Docs.data';
+import { createResource } from 'solid-js';
+import { getDoc } from '@solid.js/docs';
+import { useI18n } from '@solid-primitives/i18n';
 
 export const GuideData: RouteDataFunc<DocData> = (props) => {
   const location = useLocation();

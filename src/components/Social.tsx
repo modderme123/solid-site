@@ -1,4 +1,4 @@
-import { For, Component } from 'solid-js';
+import { Component, For } from 'solid-js';
 
 const socials = [
   {

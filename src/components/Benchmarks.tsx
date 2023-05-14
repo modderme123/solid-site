@@ -1,7 +1,7 @@
+import { For, Show, createMemo, createSignal } from 'solid-js';
 import type { Component } from 'solid-js';
-import { useI18n } from '@solid-primitives/i18n';
-import { createSignal, createMemo, For, Show } from 'solid-js';
 import { createVisibilityObserver } from '@solid-primitives/intersection-observer';
+import { useI18n } from '@solid-primitives/i18n';
 
 export interface GraphData {
   id: string;

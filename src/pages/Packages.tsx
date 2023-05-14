@@ -1,10 +1,4 @@
-import { Component, For, Show, createSignal, createMemo, onMount, JSX } from 'solid-js';
-import { useNavigate, useRouteData, useSearchParams } from '@solidjs/router';
-import { PackagesDataProps } from './Packages.data';
-import Fuse from 'fuse.js';
-import { debounce } from '@solid-primitives/scheduled';
-import { useI18n } from '@solid-primitives/i18n';
-import { makeIntersectionObserver } from '@solid-primitives/intersection-observer';
+import { Component, For, JSX, Show, createMemo, createSignal, onMount } from 'solid-js';
 import {
   Resource,
   ResourceCategory,
@@ -12,13 +6,19 @@ import {
   ResourceType,
   ResourceTypeIcons,
 } from './Resources/Ecosystem';
+import { useNavigate, useRouteData, useSearchParams } from '@solidjs/router';
+import Fuse from 'fuse.js';
+import { Icon } from 'solid-heroicons';
+import { PackagesDataProps } from './Packages.data';
+import { SideContent } from '../components/layout/SideContent';
+import { arrowTopRightOnSquare } from 'solid-heroicons/outline';
+import { createCountdown } from '@solid-primitives/date';
+import { debounce } from '@solid-primitives/scheduled';
+import { makeIntersectionObserver } from '@solid-primitives/intersection-observer';
 import { parseKeyword } from '../utils/parseKeyword';
 import { rememberSearch } from '../utils/rememberSearch';
-import { SideContent } from '../components/layout/SideContent';
-import { Icon } from 'solid-heroicons';
-import { createCountdown } from '@solid-primitives/date';
 import { shieldCheck } from 'solid-heroicons/solid';
-import { arrowTopRightOnSquare } from 'solid-heroicons/outline';
+import { useI18n } from '@solid-primitives/i18n';
 
 const FilterButton: Component<{
   onClick: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent>;

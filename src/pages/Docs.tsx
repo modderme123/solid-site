@@ -1,21 +1,21 @@
 import {
+  Accessor,
   Component,
   For,
+  Match,
+  ParentComponent,
   Show,
   Switch,
-  Match,
   createEffect,
   createSignal,
-  Accessor,
-  ParentComponent,
 } from 'solid-js';
-import { useRouteData } from '@solidjs/router';
-import { createScrollPosition } from '@solid-primitives/scroll';
-import { throttle } from '@solid-primitives/scheduled';
-import { SideContent } from '../components/layout/SideContent';
-import { slug } from 'github-slugger';
 import type { DocData } from './Docs.data';
 import { Section } from '@solid.js/docs/dist/types';
+import { SideContent } from '../components/layout/SideContent';
+import { createScrollPosition } from '@solid-primitives/scroll';
+import { slug } from 'github-slugger';
+import { throttle } from '@solid-primitives/scheduled';
+import { useRouteData } from '@solidjs/router';
 
 const SectionButton: ParentComponent<{
   href: string;

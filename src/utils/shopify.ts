@@ -1,7 +1,7 @@
-import { createMemo, createResource, createSignal, Resource, Accessor, onMount } from 'solid-js';
-import { createStore } from 'solid-js/store';
-import { access } from '@solid-primitives/utils';
+import { Accessor, Resource, createMemo, createResource, createSignal, onMount } from 'solid-js';
 import Client from 'shopify-buy';
+import { access } from '@solid-primitives/utils';
+import { createStore } from 'solid-js/store';
 
 export interface CartUtilities {
   cart: {

@@ -1,8 +1,8 @@
 import { Component, For } from 'solid-js';
-import { Footer } from '../components/Footer';
-import { useRouteData, NavLink } from '@solidjs/router';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { NavLink, useRouteData } from '@solidjs/router';
 import type { BlogData } from './Blog.data';
+import { Footer } from '../components/Footer';
+import { useRouteReadyState } from '../utils/routeReadyState';
 
 const Blog: Component = () => {
   const data = useRouteData<BlogData>();

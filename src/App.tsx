@@ -1,9 +1,9 @@
-import { Suspense } from 'solid-js';
-import { useRoutes, Router } from '@solidjs/router';
-import { routes } from './routes';
+import { Router, useRoutes } from '@solidjs/router';
 import { AppContextProvider } from './AppContext';
-import { preventSmoothScrollOnTabbing } from './utils';
 import { Nav } from './components/Nav';
+import { Suspense } from 'solid-js';
+import { preventSmoothScrollOnTabbing } from './utils';
+import { routes } from './routes';
 
 export const App = () => {
   const Routes = useRoutes(routes);

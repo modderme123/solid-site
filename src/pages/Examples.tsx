@@ -1,12 +1,11 @@
-import Repl from 'solid-repl/lib/repl';
-import { NavLink, useRouteData, useParams } from '@solidjs/router';
-import { For, Component, createSignal, createEffect, batch, ErrorBoundary } from 'solid-js';
-import { ExamplesDataRoute } from './Examples.data';
-
+import { Component, ErrorBoundary, For, batch, createEffect, createSignal } from 'solid-js';
+import { NavLink, useParams, useRouteData } from '@solidjs/router';
 import { compiler, formatter, linter } from '../components/setupRepl';
+import { ExamplesDataRoute } from './Examples.data';
+import Repl from 'solid-repl/lib/repl';
+import { useAppContext } from '../AppContext';
 import { useI18n } from '@solid-primitives/i18n';
 import { useRouteReadyState } from '../utils/routeReadyState';
-import { useAppContext } from '../AppContext';
 
 const Examples: Component = () => {
   const data = useRouteData<ExamplesDataRoute>();

@@ -1,28 +1,27 @@
 import {
-  For,
   Component,
-  Show,
-  createSignal,
-  createEffect,
-  Suspense,
-  createMemo,
-  on,
-  batch,
   ErrorBoundary,
+  For,
+  Show,
+  Suspense,
+  batch,
+  createEffect,
+  createMemo,
+  createSignal,
+  on,
 } from 'solid-js';
-import Repl from 'solid-repl/lib/repl';
-import { useRouteData, NavLink } from '@solidjs/router';
-import { Icon } from 'solid-heroicons';
-import { arrowLeft, arrowRight, chevronDown, chevronDoubleRight } from 'solid-heroicons/solid';
-
+import { NavLink, useRouteData } from '@solidjs/router';
+import { arrowLeft, arrowRight, chevronDoubleRight, chevronDown } from 'solid-heroicons/solid';
 import { compiler, formatter, linter } from '../components/setupRepl';
-import type { TutorialRouteData } from './Tutorial.data';
-import { useI18n } from '@solid-primitives/i18n';
 import Dismiss from 'solid-dismiss';
-import { useRouteReadyState } from '../utils/routeReadyState';
-import { useAppContext } from '../AppContext';
+import { Icon } from 'solid-heroicons';
 import { LessonLookup } from '@solid.js/docs';
+import Repl from 'solid-repl/lib/repl';
+import type { TutorialRouteData } from './Tutorial.data';
 import type { editor } from 'monaco-editor';
+import { useAppContext } from '../AppContext';
+import { useI18n } from '@solid-primitives/i18n';
+import { useRouteReadyState } from '../utils/routeReadyState';
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 interface DirectoryMenuProps {

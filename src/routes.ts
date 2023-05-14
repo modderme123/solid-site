@@ -1,16 +1,16 @@
-import { lazy } from 'solid-js';
-import { RouteDefinition, Navigate, RouteDataFunc } from '@solidjs/router';
-import { ContributorsData } from './pages/Contributors.data';
+import { Navigate, RouteDataFunc, RouteDefinition } from '@solidjs/router';
 import { BenchmarkData } from './pages/Benchmarks.data';
+import { BlogArticleData } from './pages/BlogArticle.data';
+import { BlogData } from './pages/Blog.data';
+import { ContributorsData } from './pages/Contributors.data';
 import { DocsData } from './pages/Docs.data';
+import { ExamplesData } from './pages/Examples.data';
 import { GuideData } from './pages/Guide.data';
-import { TutorialData } from './pages/Tutorial.data';
 import { PackagesData } from './pages/Packages.data';
 import { ResourcesData } from './pages/Resources.data';
-import { ExamplesData } from './pages/Examples.data';
 import { StoreData } from './pages/Store.data';
-import { BlogData } from './pages/Blog.data';
-import { BlogArticleData } from './pages/BlogArticle.data';
+import { TutorialData } from './pages/Tutorial.data';
+import { lazy } from 'solid-js';
 
 export const routes: RouteDefinition[] = [
   {

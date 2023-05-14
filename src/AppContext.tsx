@@ -1,10 +1,10 @@
-import { ParentComponent, createContext, createEffect, createResource, useContext } from 'solid-js';
+import { I18nContext, createI18nContext } from '@solid-primitives/i18n';
 import { Meta, Title } from 'solid-meta';
-import { useLocation } from '@solidjs/router';
-import { createCookieStorage } from '@solid-primitives/storage';
-import { createI18nContext, I18nContext } from '@solid-primitives/i18n';
+import { ParentComponent, createContext, createEffect, createResource, useContext } from 'solid-js';
 import { ResourceMetadata, getGuideDirectory } from '@solid.js/docs';
 import { LangType } from '../lang/types';
+import { createCookieStorage } from '@solid-primitives/storage';
+import { useLocation } from '@solidjs/router';
 
 interface AppContextInterface {
   isDark: boolean;
