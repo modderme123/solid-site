@@ -46,4 +46,5 @@ const OldRepl: Component<{ tabs: Tab[] }> = (props) => {
     </ErrorBoundary>
   );
 };
+
 export default OldRepl;

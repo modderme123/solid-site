@@ -13,11 +13,7 @@ export const ModeToggle: VoidComponent = () => {
     <button
       type="button"
       onClick={() => (context.isDark = !context.isDark)}
-      class="focus:color-red-500 border-solid-100 ml-2 h-10 cursor-pointer rounded-md border bg-center bg-no-repeat px-3 text-solid-medium hover:border-gray-500 dark:border-gray-600 dark:brightness-150 dark:hover:border-gray-500"
-      classList={{
-        'hover:bg-gray-300 dark:hover:text-black focus:outline-none focus:highlight-none active:highlight-none focus:ring-0 active:outline-none':
-          context.isDark,
-      }}
+      class="ml-2 h-10 cursor-pointer rounded-md border border-gray-600 px-3 brightness-150 hover:border-gray-500"
       title={title()}
     >
       <Icon path={context.isDark ? sun : moon} class="h-6" />

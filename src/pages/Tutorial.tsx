@@ -86,10 +86,7 @@ const DirectoryMenu: Component<DirectoryMenuProps> = (props) => {
 
   return (
     <>
-      <button
-        class="group flex items-center space-x-1 px-10 py-2 focus:outline-none"
-        ref={menuButton}
-      >
+      <button class="group flex items-center space-x-1 px-10 py-2" ref={menuButton}>
         <div class="inline-flex flex-grow flex-col items-baseline">
           <h3 class="text-solid text-xl leading-none">{props.current?.lessonName}</h3>
         </div>

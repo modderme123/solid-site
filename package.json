@@ -43,7 +43,7 @@
     "shopify-buy": "^2.19.0",
     "solid-dismiss": "^1.7.121",
     "solid-heroicons": "^3.1.1",
-    "solid-js": "^1.7.5",
+    "solid-js": "1.7.5",
     "solid-meta": "^0.28.1",
     "solid-repl": "file:../solid-playground",
     "solid-social": "^0.9.6",

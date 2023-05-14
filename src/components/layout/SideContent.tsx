@@ -4,7 +4,7 @@ import { chevronRight } from 'solid-heroicons/outline';
 import { Accessor, Component, JSX, Setter } from 'solid-js';
 import { routeReadyState, useRouteReadyState } from '../../utils/routeReadyState';
 
-const SideContent: Component<{
+export const SideContent: Component<{
   toggleVisible: Accessor<boolean>;
   setToggleVisible: Setter<boolean>;
   aside: JSX.Element;
@@ -15,9 +15,9 @@ const SideContent: Component<{
   useRouteReadyState();
 
   return (
-    <div dir="ltr" class="relative flex min-h-screen flex-auto lg:bg-doc dark:lg:bg-darkDoc">
+    <div dir="ltr" class="relative flex min-h-screen flex-auto">
       <div class="container flex">
-        <div class="absolute left-0 z-20 h-full rounded-br-lg bg-gray-100 dark:bg-gray-900 lg:static lg:w-3/12">
+        <div class="absolute left-0 z-20 h-full rounded-br-lg lg:static">
           <button
             class={`reveal-delay fixed right-3 top-20 rounded-lg bg-solid-medium text-white transition duration-500 lg:hidden`}
             classList={{
@@ -30,16 +30,16 @@ const SideContent: Component<{
           </button>
           <Dismiss
             show
-            class="sticky top-[4rem] w-0 lg:col-span-3 lg:w-auto"
+            class="sticky top-[3.5rem] w-0 lg:col-span-3 lg:w-auto"
             menuButton={menuButton}
             open={props.toggleVisible}
             setOpen={props.setToggleVisible}
           >
             <div
               class={
-                'w-[85vw] overflow-auto border-gray-100 bg-white p-10 shadow-2xl dark:bg-solid-darkbg ' +
-                'fixed left-0 top-14 transition-transform dark:bg-solid-darkLighterBg lg:translate-x-0 lg:bg-transparent lg:duration-0 ' +
-                'max-w-md duration-300 lg:top-12 lg:w-auto lg:flex-col lg:border-0 lg:p-0 lg:shadow-none ' +
+                'w-[85vw] overflow-auto bg-white p-10 shadow-2xl dark:bg-solid-darkbg ' +
+                'fixed left-0 top-14 transition-transform dark:bg-solid-darkLighterBg lg:translate-x-0 lg:duration-0 ' +
+                'max-w-xs duration-300 lg:top-12 lg:w-auto lg:flex-col lg:p-0 lg:shadow-none ' +
                 'relative z-50 lg:flex'
               }
               classList={{
@@ -59,5 +59,3 @@ const SideContent: Component<{
     </div>
   );
 };
-
-export default SideContent;

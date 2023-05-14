@@ -4,7 +4,8 @@ interface Example {
   description: string;
 }
 
-const list: Record<string, Example[]> = {
+export type ExamplesDataRoute = Record<string, Example[]>;
+const list: ExamplesDataRoute = {
   Basic: [
     {
       id: 'counter',
@@ -71,8 +72,4 @@ const list: Record<string, Example[]> = {
   ],
 };
 
-export const ExamplesData = () => ({
-  list,
-});
-
-export type ExamplesDataRoute = ReturnType<typeof ExamplesData>;
+export const ExamplesData = () => list;

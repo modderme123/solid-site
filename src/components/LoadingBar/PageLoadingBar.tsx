@@ -1,6 +1,6 @@
 import { Component } from 'solid-js';
 
-const PageLoadingBar: Component<{
+export const PageLoadingBar: Component<{
   postion: 'top' | 'bottom';
   active: boolean;
 }> = (props) => {
@@ -21,5 +21,3 @@ const PageLoadingBar: Component<{
     </div>
   );
 };
-
-export default PageLoadingBar;

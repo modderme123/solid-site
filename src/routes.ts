@@ -1,5 +1,5 @@
 import { lazy } from 'solid-js';
-import { RouteDefinition, Navigate } from '@solidjs/router';
+import { RouteDefinition, Navigate, RouteDataFunc } from '@solidjs/router';
 import { ContributorsData } from './pages/Contributors.data';
 import { BenchmarkData } from './pages/Benchmarks.data';
 import { DocsData } from './pages/Docs.data';
@@ -16,14 +16,12 @@ export const routes: RouteDefinition[] = [
   {
     path: '/',
     component: lazy(() => import('./pages/Home')),
-    data: () => ({
-      benchmarks: BenchmarkData(),
-    }),
+    data: BenchmarkData,
   },
   {
     path: '/guides/:id',
     component: lazy(() => import('./pages/Docs')),
-    data: GuideData,
+    data: GuideData as RouteDataFunc,
   },
   {
     path: '/hack',
@@ -35,22 +33,22 @@ export const routes: RouteDefinition[] = [
   {
     path: '/guide',
     component: () => Navigate({ href: '/guides/getting-started' }),
-    data: GuideData,
+    data: GuideData as RouteDataFunc,
   },
   {
     path: '/guides',
     component: () => Navigate({ href: '/guides/getting-started' }),
-    data: GuideData,
+    data: GuideData as RouteDataFunc,
   },
   {
     path: '/blog/:slug',
     component: lazy(() => import('./pages/BlogArticle')),
-    data: BlogArticleData,
+    data: BlogArticleData as RouteDataFunc,
   },
   {
     path: '/blog',
     component: lazy(() => import('./pages/Blog')),
-    data: BlogData,
+    data: BlogData as RouteDataFunc,
   },
   {
     path: '/docs',
@@ -70,7 +68,7 @@ export const routes: RouteDefinition[] = [
   {
     path: '/tutorial/:id',
     component: lazy(() => import('./pages/Tutorial')),
-    data: TutorialData,
+    data: TutorialData as RouteDataFunc,
   },
   {
     path: '/tutorial',

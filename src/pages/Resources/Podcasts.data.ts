@@ -1,6 +1,6 @@
 import { Resource, ResourceCategory, ResourceType } from './Ecosystem';
 
-const podcasts: Array<Resource> = [
+export const podcasts: Array<Resource> = [
   {
     title: 'The Runtime: SolidJS',
     link: 'https://runtimepodcast.com/#7',
@@ -116,5 +116,3 @@ const podcasts: Array<Resource> = [
     published_at: 1683668658000,
   },
 ];
-
-export default podcasts;

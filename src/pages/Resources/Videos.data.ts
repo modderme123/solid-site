@@ -1,6 +1,6 @@
 import { Resource, ResourceCategory, ResourceType } from './Ecosystem';
 
-const videos: Array<Resource> = [
+export const videos: Array<Resource> = [
   {
     link: 'https://www.youtube.com/watch?v=uPXn9S31o7Q&list=PL4cUxeGkcC9gU_GvFygZFu0aBysPilkbB',
     title: 'Solid JS Crash Course Tutorial',
@@ -973,5 +973,3 @@ const videos: Array<Resource> = [
     published_at: 1668545043000,
   },
 ];
-
-export default videos;

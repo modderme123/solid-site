@@ -1,4 +1,4 @@
-import { useLocation, RouteDataFunc } from '@solidjs/router';
+import { useLocation } from '@solidjs/router';
 import { createResource } from 'solid-js';
 import { useI18n } from '@solid-primitives/i18n';
 import { DocFile, getApi } from '@solid.js/docs';
@@ -9,7 +9,7 @@ export interface DocData {
   doc?: DocFile;
 }
 
-export const DocsData: RouteDataFunc<DocData> = () => {
+export const DocsData = (): DocData => {
   const location = useLocation();
   const [, { locale }] = useI18n();
 

@@ -2,7 +2,7 @@ import { Component, For, Show } from 'solid-js';
 import { useRouteData } from '@solidjs/router';
 import github from '../assets/github.svg';
 import { ContributorsDataProps } from './Contributors.data';
-import Footer from '../components/Footer';
+import { Footer } from '../components/Footer';
 import { useI18n } from '@solid-primitives/i18n';
 import { useRouteReadyState } from '../utils/routeReadyState';
 
@@ -63,7 +63,7 @@ const Contributor: Component<ContributorProps> = (props) => {
   );
 };
 
-const Contributors: Component = () => {
+export const Contributors: Component = () => {
   const [t] = useI18n();
   const data = useRouteData<ContributorsDataProps>();
 

@@ -295,5 +295,3 @@ export const createProduct = (
   };
   return [details, images, refetch];
 };
-
-export default createCart;

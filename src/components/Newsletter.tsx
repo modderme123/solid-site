@@ -80,5 +80,3 @@ export const Newsletter: Component<NewsletterProps> = (props) => {
     </form>
   );
 };
-
-export default Newsletter;

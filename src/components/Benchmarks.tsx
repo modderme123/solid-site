@@ -88,7 +88,7 @@ const Chart: Component<{ rows: RowData[]; scale: string; direction: string }> = 
   );
 };
 
-const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
+export const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
   const [t] = useI18n();
   const [current, setCurrent] = createSignal(0);
   const [expanded, setExpanded] = createSignal(false);
@@ -144,5 +144,3 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
     </>
   );
 };
-
-export default Benchmarks;

@@ -24,11 +24,6 @@ module.exports = {
       fontSize: {
         xxs: '.55rem',
       },
-      screens: {
-        'pointer-fine': {
-          raw: '(pointer: fine)',
-        },
-      },
       colors: {
         primary: '#4483c1',
         solid: {
@@ -52,39 +47,14 @@ module.exports = {
           css: {
             '--tw-prose-body': '#333',
             '--tw-prose-invert-body': '#fff',
-            '--tw-prose-headings': theme('colors.solid.default'),
-            '--tw-prose-invert-headings': theme('colors.solid.darkdefault'),
-            '--tw-prose-invert-quote-borders': theme('colors.solid.mediumgray'),
-            '--tw-prose-pre-bg': 'transparent',
-            color: 'var(--tw-prose-body)',
-            fontFamily: 'Gordita',
-            pre: null,
-            'blockquote p:first-of-type::before': { content: 'none' },
-            'blockquote p:first-of-type::after': { content: 'none' },
+            blockquote: {
+              quotes: 'none',
+            },
             'code::before': { content: 'none' },
             'code::after': { content: 'none' },
-            h1: {
-              fontWeight: '600',
-              fontSize: '1.75rem',
-              borderBottom: '1px solid #e5e7eb',
-              paddingBottom: '1rem',
-              marginTop: '2rem',
-              color: 'var(--tw-prose-headings)',
-            },
-            h2: {
-              fontWeight: '600',
-              borderBottom: '1px solid #e5e7eb',
-              paddingBottom: '1rem',
-              marginTop: '2rem',
-              color: 'var(--tw-prose-headings)',
-            },
-            a: {
-              color: '#999',
-              textDecoration: 'none',
-              fontWeight: '600',
-              '&:hover': {
-                color: '#2c4f7c',
-              },
+            pre: {
+              backgroundColor: false,
+              padding: false,
             },
           },
         },
@@ -95,13 +65,7 @@ module.exports = {
         'blocks-one-dark': "url('/src/assets/shapes/blocks1-dark.svg')",
         'blocks-two': "url('/src/assets/shapes/blocks2.svg')",
         'blocks-three': "url('/src/assets/shapes/blocks3.svg')",
-        doc: 'linear-gradient(to left, #fff, #fff 50%, rgba(243, 244, 246) 10%)',
-        darkDoc: 'linear-gradient(to left, #222222, #222222 50%, #444444 10%)',
-        translate: 'url(/img/icons/translate2.svg)',
       }),
-      backgroundSize: {
-        24: '1.5rem',
-      },
       container: {
         center: true,
       },
@@ -111,11 +75,6 @@ module.exports = {
       fontFamily: {
         display: ['Gordita', ...theme.fontFamily.sans],
       },
-    },
-  },
-  variants: {
-    extend: {
-      backgroundColor: ['group-hover'],
     },
   },
   plugins: [require('@tailwindcss/typography'), require('tailwindcss-dir')],

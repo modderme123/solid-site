@@ -1,5 +1,5 @@
 import { Component, For } from 'solid-js';
-import Footer from '../components/Footer';
+import { Footer } from '../components/Footer';
 import { useRouteData, NavLink } from '@solidjs/router';
 import { useRouteReadyState } from '../utils/routeReadyState';
 import type { BlogData } from './Blog.data';

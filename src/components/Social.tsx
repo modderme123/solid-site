@@ -37,8 +37,6 @@ const SocialIcon: Component<{ href: string; alt: string; icon: string }> = (prop
   </li>
 );
 
-const Social: Component = () => {
+export const Social: Component = () => {
   return <For each={socials} children={(social) => <SocialIcon {...social} />} />;
 };
-
-export default Social;

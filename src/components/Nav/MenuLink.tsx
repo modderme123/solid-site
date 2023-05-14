@@ -2,6 +2,8 @@ import { createEventListener } from '@solid-primitives/event-listener';
 import { NavLink } from '@solidjs/router';
 import { batch, createSignal, onMount, ParentComponent, Show } from 'solid-js';
 import { setRouteReadyState, page, reflow } from '../../utils';
+import { Icon } from 'solid-heroicons';
+import { arrowTopRightOnSquare } from 'solid-heroicons/solid';
 
 export type LinkTypes = {
   title: string;
@@ -76,27 +78,15 @@ export const MenuLink: ParentComponent<MenuLinkProps> = (props) => {
       <NavLink
         href={props.path}
         target={props.external ? '_blank' : undefined}
-        class="m-0 inline-flex items-center whitespace-nowrap rounded px-3 py-3 text-[15px] transition dark:hover:bg-solid-darkLighterBg sm:m-1 sm:px-4 sm:text-base pointer-fine:hover:bg-solid-medium pointer-fine:hover:text-white"
-        activeClass="bg-solid-medium dark:bg-solid-light text-white"
+        class="m-0 inline-flex items-center whitespace-nowrap rounded px-2 py-2 text-[14px] transition hover:bg-gray-200 hover:text-black dark:hover:bg-solid-darkLighterBg dark:hover:text-white sm:m-1 sm:px-4"
+        activeClass="bg-solid-light text-white"
         onClick={() => !props.external && onClick()}
         noScroll
         ref={linkEl}
       >
         <span>{props.title}</span>
         <Show when={props.external}>
-          <svg
-            class="z-50 -mt-1 h-5 opacity-30 ltr:ml-1 rtl:mr-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
+          <Icon path={arrowTopRightOnSquare} class="h-4 w-4 opacity-60" />
         </Show>
       </NavLink>
     </li>

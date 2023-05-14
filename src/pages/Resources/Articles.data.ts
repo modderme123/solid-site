@@ -1,6 +1,6 @@
 import { Resource, ResourceCategory, ResourceType } from './Ecosystem';
 
-const articles: Array<Resource> = [
+export const articles: Array<Resource> = [
   {
     link: 'https://dev.to/this-is-learning/javascript-frameworks-and-metagaming-pb5',
     title: 'JavaScript Frameworks and Metagaming',
@@ -1275,5 +1275,3 @@ const articles: Array<Resource> = [
     published_at: 1683134365000,
   },
 ];
-
-export default articles;

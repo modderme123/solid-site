@@ -1,6 +1,6 @@
 import { Resource, ResourceCategory, PackageType } from './Ecosystem';
 
-const utilities: Array<Resource> = [
+export const utilities: Array<Resource> = [
   {
     link: 'https://github.com/solidjs/solid-styled-jsx',
     title: 'solid-styled-jsx',
@@ -2258,5 +2258,3 @@ const utilities: Array<Resource> = [
     published_at: 1683714279538,
   },
 ];
-
-export default utilities;

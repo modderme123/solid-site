@@ -1,4 +1,4 @@
-import utilities from './Resources/Utilities.data';
+import { utilities } from './Resources/Utilities.data';
 
 export const PackagesData = () => ({
   list: [...utilities],

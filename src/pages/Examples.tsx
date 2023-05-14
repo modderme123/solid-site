@@ -57,7 +57,7 @@ const Examples: Component = () => {
       <div class="container mx-auto my-10 w-[98vw]">
         <div class="gap-6 md:grid md:grid-cols-12">
           <div class="overflow-auto rounded border p-5 dark:border-solid-darkLighterBg md:col-span-4 md:h-[82vh] lg:col-span-3">
-            <For each={Object.entries(data.list)}>
+            <For each={Object.entries(data)}>
               {([name, examples]) => (
                 <>
                   <h3 class="border-b-2 border-solid pb-2 text-xl font-semibold text-solid-default dark:border-solid-darkLighterBg dark:text-solid-darkdefault">

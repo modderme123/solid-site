@@ -12,7 +12,7 @@ import {
 import { useRouteData } from '@solidjs/router';
 import { createScrollPosition } from '@solid-primitives/scroll';
 import { throttle } from '@solid-primitives/scheduled';
-import SideContent from '../components/layout/SideContent';
+import { SideContent } from '../components/layout/SideContent';
 import { slug } from 'github-slugger';
 import type { DocData } from './Docs.data';
 import { Section } from '@solid.js/docs/dist/types';
@@ -36,48 +36,46 @@ const Sidebar: Component<{
   current: Accessor<string | null>;
   hash: string | undefined;
 }> = (props) => (
-  <ul class="flex flex-1 flex-col overflow-auto py-10 dark:text-white lg:pl-10">
+  <ul class="flex flex-1 flex-col overflow-auto py-4 text-sm lg:pl-10">
     <For each={props.items}>
       {(firstLevel: Section) => (
         <SectionButton
           title={firstLevel.value}
-          class={
-            `w-full border-b border-gray-200 text-left transition hover:text-gray-400 dark:border-gray-500 dark:text-white ` +
-            `mb-6 mt-2 flex flex-wrap content-center justify-between space-x-2 p-2 py-2 text-xl`
-          }
+          class="block break-words p-2"
           classList={{
-            'font-semibold text-solid-medium dark:text-solid-darkdefault':
+            'text-solid dark:text-solid hover:text-solid-dark dark:hover:text-solid-light':
               props.current() == firstLevel.value,
+            'text-gray-500 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-400':
+              props.current() != firstLevel.value,
           }}
           href={`#${slug(firstLevel.value)}`}
         >
-          <ul>
+          <ul class="pl-4">
             <For each={firstLevel.children}>
-              {(secondLevel, index) => (
+              {(secondLevel) => (
                 <SectionButton
                   title={secondLevel.value}
-                  class="text-md block break-words py-1 pl-2 font-semibold text-gray-500 dark:text-gray-300"
+                  class="block break-words p-2"
                   classList={{
-                    'text-solid hover:text-solid-dark dark:hover:text-solid-light':
+                    'text-solid dark:text-solid hover:text-solid-dark dark:hover:text-solid-light':
                       `#${slug(secondLevel.value)}` === props.hash,
-                    'hover:text-gray-400 dark:hover:text-gray-400':
+                    'text-gray-500 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-400':
                       `#${slug(secondLevel.value)}` !== props.hash,
-                    'pb-2': index() == firstLevel.children!.length - 1,
                   }}
                   href={`#${slug(secondLevel.value)}`}
                 >
                   <Show when={secondLevel.children && secondLevel.children.length !== 0}>
-                    <ul class="my-1">
+                    <ul class="pl-6">
                       <For each={secondLevel.children}>
                         {(thirdLevel) => (
                           <SectionButton
                             href={`#${slug(thirdLevel.value)}`}
                             title={thirdLevel.value}
-                            class="my-2 ml-6 block break-words pb-2 text-sm text-gray-400"
+                            class="block break-words p-2"
                             classList={{
-                              'text-solid hover:text-solid-dark dark:hover:text-solid-dark':
+                              'text-solid dark:text-solid hover:text-solid-dark dark:hover:text-solid-light':
                                 `#${slug(thirdLevel.value)}` === props.hash,
-                              'hover:text-gray-500 dark:hover:text-gray-300':
+                              'text-gray-500 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-400':
                                 `#${slug(thirdLevel.value)}` !== props.hash,
                             }}
                           />

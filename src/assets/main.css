@@ -49,9 +49,6 @@ h3 {
 .defer {
   content-visibility: auto;
 }
-.header-anchor {
-  margin-right: 0.25em;
-}
 pre {
   min-width: 100%;
   background: transparent;
@@ -73,29 +70,17 @@ pre {
 .prose blockquote {
   @apply mx-0;
 }
-
-.prose a:not(.header-anchor) {
-  color: #777777;
-  background-image: linear-gradient(#e7e7e7, #e7e7e7);
-  background-repeat: no-repeat;
-  background-size: 100% 2px;
-  background-position: 0 1.1em;
-  padding-bottom: 0.4em;
-  transition: background-size 300ms;
+.header-anchor {
+  text-decoration: none;
+  visibility: hidden;
+  margin-left: -1em;
+  width: 1em;
+  display: inline-block;
 }
-.dark .prose a:not(.header-anchor) {
-  color: #ccc;
-  background-image: linear-gradient(#666, #666);
-}
-.dark .prose a:not(.header-anchor):hover {
-  color: #ddd;
-  background-image: linear-gradient(#888, #888);
-}
-
-.prose a:not(.header-anchor):hover {
-  color: #2c4f7c;
-  background-image: linear-gradient(#2c4f7c, #2c4f7c);
-  background-size: 100% 4px;
+h1:hover .header-anchor,
+h2:hover .header-anchor,
+h3:hover .header-anchor {
+  visibility: visible;
 }
 
 /* TODO: Recreate this class in TW classes */
@@ -115,6 +100,7 @@ pre {
   background-color: rgb(54, 55, 56);
   border-radius: 3px;
 }
+
 .chevron::after {
   @apply border-gray-300;
   border-style: solid;
@@ -145,18 +131,6 @@ pre {
 .chevron.chevron-left:hover::after {
   right: 0.45em;
 }
-
-.nav-items-container {
-  flex-shrink: 0;
-  flex-grow: 1;
-  flex-basis: 0px;
-  min-width: 0px;
-}
-/*
-.nav-logo-bg {
-  background: linear-gradient(to right, rgba(255, 255, 255, 1), 92%, rgba(255, 255, 255, 0));
-}
-*/
 
 /* Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {

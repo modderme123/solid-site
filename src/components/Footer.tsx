@@ -1,5 +1,5 @@
 import { Component } from 'solid-js';
-import Newsletter from './Newsletter';
+import { Newsletter } from './Newsletter';
 import { useI18n } from '@solid-primitives/i18n';
 import wordmark from '../assets/wordmark-dark.svg';
 import builder from '../assets/supporters/builder.webp';
@@ -10,7 +10,7 @@ import divriots from '../assets/supporters/divriots.webp';
 import jetbrains from '../assets/supporters/jetbrains.webp';
 import vercel from '../assets/supporters/vercel.webp';
 import stytch from '../assets/supporters/stytch.webp';
-import Social from './Social';
+import { Social } from './Social';
 
 const Supporter: Component<{
   img: string;
@@ -27,7 +27,7 @@ const Supporter: Component<{
   </a>
 );
 
-const Footer: Component = () => {
+export const Footer: Component = () => {
   const [t] = useI18n();
   return (
     <div
@@ -85,5 +85,3 @@ const Footer: Component = () => {
     </div>
   );
 };
-
-export default Footer;
