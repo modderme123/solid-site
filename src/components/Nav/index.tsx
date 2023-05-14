@@ -12,6 +12,7 @@ import { PageLoadingBar } from '../LoadingBar/PageLoadingBar';
 import { LinkTypes, MenuLink } from './MenuLink';
 import { LanguageSelector } from './LanguageSelector';
 import { ModeToggle } from './ModeToggle';
+import { LangType } from '../../../lang/types';
 
 const langs = {
   en: 'English',
@@ -41,7 +42,7 @@ export const Nav: Component = () => {
   const [subnav, setSubnav] = createSignal<LinkTypes[]>([]);
   const [subnavPosition, setSubnavPosition] = createSignal<number>(0);
   const closeSubnav = debounce(() => setSubnav([]), 150);
-  const [t, { locale }] = useI18n();
+  const [t, { locale }] = useI18n<LangType>();
   const context = useAppContext();
 
   let langBtnTablet!: HTMLButtonElement;
@@ -54,14 +55,14 @@ export const Nav: Component = () => {
 
   const navList = createMemo<LinkTypes[]>(
     on(
-      () => [(t('global.nav') as LinkTypes[]) || [], context.guides] as const,
+      () => [(t('global.nav') as unknown as LinkTypes[]) || [], context.guides] as const,
       ([nav, guides]) => {
         return nav.map<LinkTypes>((item) => {
           const itm = { ...item };
           // Inject guides if available
           if (item.path == '/guides') {
             if (guides?.length) {
-              const direction = t('global.dir', {}, 'ltr');
+              const direction = t('global.dir', {}, 'ltr') as 'ltr' | 'rtl';
               itm.links = guides.map(({ title, description, resource }) => ({
                 title,
                 description,

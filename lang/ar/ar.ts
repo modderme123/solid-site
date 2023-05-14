@@ -6,8 +6,9 @@ import media from './media.json';
 import examples from './examples.json';
 import contributors from './contributors.json';
 import docs from './docs.json';
+import { LangType } from '../types';
 
-const langs = () => ({
+export const langs: LangType = {
   global,
   home,
   docs,
@@ -16,6 +17,4 @@ const langs = () => ({
   tutorial,
   examples,
   contributors,
-});
-
-export default langs;
+} as LangType;

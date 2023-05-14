@@ -4,6 +4,7 @@ import { useLocation } from '@solidjs/router';
 import { createCookieStorage } from '@solid-primitives/storage';
 import { createI18nContext, I18nContext } from '@solid-primitives/i18n';
 import { ResourceMetadata, getGuideDirectory } from '@solid.js/docs';
+import { LangType } from '../lang/types';
 
 interface AppContextInterface {
   isDark: boolean;
@@ -18,27 +19,27 @@ const AppContext = createContext<AppContextInterface>({
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const langs: { [lang: string]: () => Promise<any> } = {
-  en: async () => (await import('../lang/en/en')).default(),
-  az: async () => (await import('../lang/az/az')).default(),
-  it: async () => (await import('../lang/it/it')).default(),
-  de: async () => (await import('../lang/de/de')).default(),
-  pt: async () => (await import('../lang/pt/pt')).default(),
-  ja: async () => (await import('../lang/ja/ja')).default(),
-  fr: async () => (await import('../lang/fr/fr')).default(),
-  id: async () => (await import('../lang/id/id')).default(),
-  he: async () => (await import('../lang/he/he')).default(),
-  ru: async () => (await import('../lang/ru/ru')).default(),
-  ar: async () => (await import('../lang/ar/ar')).default(),
-  fa: async () => (await import('../lang/fa/fa')).default(),
-  tr: async () => (await import('../lang/tr/tr')).default(),
-  tl: async () => (await import('../lang/tl/tl')).default(),
-  'ko-kr': async () => (await import('../lang/ko-kr/ko-kr')).default(),
-  'zh-cn': async () => (await import('../lang/zh-cn/zh-cn')).default(),
-  'zh-tw': async () => (await import('../lang/zh-tw/zh-tw')).default(),
-  es: async () => (await import('../lang/es/es')).default(),
-  pl: async () => (await import('../lang/pl/pl')).default(),
-  uk: async () => (await import('../lang/uk/uk')).default(),
+const langs: { [lang: string]: () => Promise<LangType> } = {
+  en: async () => (await import('../lang/en/en')).langs,
+  az: async () => (await import('../lang/az/az')).langs,
+  it: async () => (await import('../lang/it/it')).langs,
+  de: async () => (await import('../lang/de/de')).langs,
+  pt: async () => (await import('../lang/pt/pt')).langs,
+  ja: async () => (await import('../lang/ja/ja')).langs,
+  fr: async () => (await import('../lang/fr/fr')).langs,
+  id: async () => (await import('../lang/id/id')).langs,
+  he: async () => (await import('../lang/he/he')).langs,
+  ru: async () => (await import('../lang/ru/ru')).langs,
+  ar: async () => (await import('../lang/ar/ar')).langs,
+  fa: async () => (await import('../lang/fa/fa')).langs,
+  tr: async () => (await import('../lang/tr/tr')).langs,
+  tl: async () => (await import('../lang/tl/tl')).langs,
+  'ko-kr': async () => (await import('../lang/ko-kr/ko-kr')).langs,
+  'zh-cn': async () => (await import('../lang/zh-cn/zh-cn')).langs,
+  'zh-tw': async () => (await import('../lang/zh-tw/zh-tw')).langs,
+  es: async () => (await import('../lang/es/es')).langs,
+  pl: async () => (await import('../lang/pl/pl')).langs,
+  uk: async () => (await import('../lang/uk/uk')).langs,
 };
 
 // Some browsers does not map correctly to some locale code
@@ -101,7 +102,7 @@ export const AppContextProvider: ParentComponent = (props) => {
   createEffect(() => set('locale', i18n[1].locale()), cookieOptions);
   createEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (!lang.loading) add(i18n[1].locale(), lang() as Record<string, any>);
+    if (!lang.loading) add(i18n[1].locale(), lang()!);
   });
   createEffect(() => {
     document.documentElement.lang = locale();

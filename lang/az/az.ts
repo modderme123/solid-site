@@ -1,3 +1,4 @@
+import { LangType } from '../types';
 import global from './global.json';
 import home from './home.json';
 import resources from './resources.json';
@@ -7,15 +8,13 @@ import examples from './examples.json';
 import contributors from './contributors.json';
 import docs from './docs.json';
 
-const langs = () => ({
+export const langs: LangType = {
   global,
-  home,
+  home: home as LangType['home'],
   docs,
   media,
   resources,
   tutorial,
   examples,
   contributors,
-});
-
-export default langs;
+};

@@ -147,8 +147,16 @@ const Home: Component = () => {
             <div innerHTML={t('home.news.content')} />
           </a>
           <section class="grid space-y-4 rounded-lg sm:grid-cols-2 lg:grid-cols-4 lg:space-x-4 lg:space-y-0">
-            <For each={t('home.strengths')}>
-              {(strength: { icon: string; label: string; description: string }) => (
+            <For
+              each={
+                t('home.strengths') as unknown as {
+                  icon: string;
+                  label: string;
+                  description: string;
+                }[]
+              }
+            >
+              {(strength) => (
                 <div class="mt-4 border-0 border-b px-10 py-4 last:border-none dark:border-solid-darkLighterBg md:border-r md:py-10 lg:ml-4 lg:mt-0 lg:border-b-0">
                   <img
                     class="mb-5 w-12 dark:brightness-150"
@@ -165,8 +173,12 @@ const Home: Component = () => {
         <div class="container flex flex-col px-0 lg:my-10 lg:space-y-10 lg:px-12">
           <section class="defer m-5 rounded-lg border-2 border-gray-200 dark:border-solid-darkLighterBg lg:m-0">
             <ul class="grid w-full grid-cols-1 md:grid-cols-6">
-              <For each={t('home.facts')}>
-                {(fact: { label: string; detail: string; link?: string }) => {
+              <For
+                each={
+                  t('home.facts') as unknown as { label: string; detail: string; link?: string }[]
+                }
+              >
+                {(fact) => {
                   const d = (
                     <div class="flex md:inline-block">
                       <strong class="mr-1 font-semibold">{fact.label}</strong>
@@ -247,8 +259,8 @@ render(() => <CountingComponent />, document.getElementById("app"));`,
               <h3 class="text-solid mt-6 text-3xl font-semibold leading-10">
                 {t('home.example.headline')}
               </h3>
-              <For each={t('home.example.copy')}>
-                {(copy: string) => <p class="mt-9 leading-7">{copy}</p>}
+              <For each={t('home.example.copy') as unknown as string[]}>
+                {(copy) => <p class="mt-9 leading-7">{copy}</p>}
               </For>
               <Link
                 class={`button mt-8 inline-block font-semibold text-solid-default hover:text-gray-500 dark:text-solid-darkdefault dark:hover:text-gray-300 ${chevron()}`}
@@ -307,8 +319,8 @@ render(() => <CountingComponent />, document.getElementById("app"));`,
               <p class="mt-4 text-xl">{t('home.features.copy')}</p>
             </div>
             <ul class="flex flex-wrap">
-              <For each={t('home.features.list')}>
-                {(feature: string) => (
+              <For each={t('home.features.list') as unknown as string[]}>
+                {(feature) => (
                   <li class="feature-block mr-3 mt-3 w-full border-gray-300 px-5 py-3 dark:border-gray-700 md:w-auto">
                     <span class="block text-sm">{feature}</span>
                   </li>

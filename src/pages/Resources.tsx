@@ -24,13 +24,9 @@ const AResource: Component<Resource> = (props) => {
   const { days, hours } = createCountdown(published, now);
   const publish_detail = () => {
     if (days! > 1) {
-      return t('resources.days_ago', { amount: days!.toString() }, '{{amount}} days ago') as string;
+      return t('resources.days_ago', { amount: days!.toString() }, '{{amount}} days ago');
     }
-    return t(
-      'resources.hours_ago',
-      { amount: hours!.toString() },
-      '{{amount}} hours ago',
-    ) as string;
+    return t('resources.hours_ago', { amount: hours!.toString() }, '{{amount}} hours ago');
   };
 
   return (

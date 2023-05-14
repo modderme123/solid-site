@@ -31,7 +31,7 @@ export const Footer: Component = () => {
   const [t] = useI18n();
   return (
     <div
-      dir={t('global.dir', {}, 'ltr')}
+      dir={t('global.dir', {}, 'ltr') as 'ltr' | 'rtl'}
       class="mx-2 mt-5 rounded-tl-3xl rounded-tr-3xl bg-solid-lightgray py-10 dark:bg-solid-darkLighterBg"
     >
       <div class="container flex flex-col items-center space-y-10 px-7 py-10 md:px-0 lg:flex-row lg:space-x-20 lg:space-y-0 lg:px-12">
