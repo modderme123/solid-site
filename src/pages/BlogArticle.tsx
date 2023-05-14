@@ -5,7 +5,7 @@ import type { BlogArticleData } from './BlogArticle.data';
 import { Footer } from '../components/Footer';
 import { useAppContext } from '../AppContext';
 import { useI18n } from '@solid-primitives/i18n';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 
 const BlogArticle: Component = () => {
   const [t] = useI18n();

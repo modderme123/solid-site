@@ -1,5 +1,5 @@
 import { Accessor, Component, JSX, Setter } from 'solid-js';
-import { routeReadyState, useRouteReadyState } from '../../utils/routeReadyState';
+import { routeReadyState, useRouteReadyState } from '../../utils';
 import Dismiss from 'solid-dismiss';
 import { Icon } from 'solid-heroicons';
 import { chevronRight } from 'solid-heroicons/outline';

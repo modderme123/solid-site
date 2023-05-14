@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer';
 import github from '../assets/github.svg';
 import { useI18n } from '@solid-primitives/i18n';
 import { useRouteData } from '@solidjs/router';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 
 interface CoreMemberProps {
   img: string;

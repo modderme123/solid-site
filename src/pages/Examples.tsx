@@ -5,7 +5,7 @@ import { ExamplesDataRoute } from './Examples.data';
 import Repl from 'solid-repl/lib/repl';
 import { useAppContext } from '../AppContext';
 import { useI18n } from '@solid-primitives/i18n';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 
 const Examples: Component = () => {
   const data = useRouteData<ExamplesDataRoute>();

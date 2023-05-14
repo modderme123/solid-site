@@ -26,7 +26,7 @@ import productive from '../assets/icons/productive.svg';
 import sandbox from '../assets/icons/sandbox.svg';
 import { shoppingCart } from 'solid-heroicons/outline';
 import { useI18n } from '@solid-primitives/i18n';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 import wordmark from '../assets/wordmark.svg';
 
 const Repl = lazy(() => import('../components/ReplTab'));

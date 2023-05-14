@@ -1,7 +1,7 @@
 import { Component, For, Show, createMemo, createSignal, on } from 'solid-js';
 import { Link, NavLink } from '@solidjs/router';
 import { LinkTypes, MenuLink } from './MenuLink';
-import { page, routeReadyState, setRouteReadyState } from '../../utils/routeReadyState';
+import { page, routeReadyState, setRouteReadyState } from '../../utils';
 import Dismiss from 'solid-dismiss';
 import { LangType } from '../../../lang/types';
 import { LanguageSelector } from './LanguageSelector';

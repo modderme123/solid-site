@@ -21,7 +21,7 @@ import type { TutorialRouteData } from './Tutorial.data';
 import type { editor } from 'monaco-editor';
 import { useAppContext } from '../AppContext';
 import { useI18n } from '@solid-primitives/i18n';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 interface DirectoryMenuProps {

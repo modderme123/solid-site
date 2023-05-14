@@ -14,7 +14,7 @@ import { makeIntersectionObserver } from '@solid-primitives/intersection-observe
 import { parseKeyword } from '../utils/parseKeyword';
 import { rememberSearch } from '../utils/rememberSearch';
 import { useI18n } from '@solid-primitives/i18n';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 
 const AResource: Component<Resource> = (props) => {
   const [t] = useI18n();

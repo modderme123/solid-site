@@ -2,7 +2,7 @@ import { Component, For } from 'solid-js';
 import { NavLink, useRouteData } from '@solidjs/router';
 import type { BlogData } from './Blog.data';
 import { Footer } from '../components/Footer';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 
 const Blog: Component = () => {
   const data = useRouteData<BlogData>();

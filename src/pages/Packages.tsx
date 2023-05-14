@@ -15,8 +15,8 @@ import { arrowTopRightOnSquare } from 'solid-heroicons/outline';
 import { createCountdown } from '@solid-primitives/date';
 import { debounce } from '@solid-primitives/scheduled';
 import { makeIntersectionObserver } from '@solid-primitives/intersection-observer';
-import { parseKeyword } from '../utils/parseKeyword';
-import { rememberSearch } from '../utils/rememberSearch';
+import { parseKeyword } from '../utils';
+import { rememberSearch } from '../utils';
 import { shieldCheck } from 'solid-heroicons/solid';
 import { useI18n } from '@solid-primitives/i18n';
 

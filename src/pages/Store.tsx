@@ -6,7 +6,7 @@ import Dismiss from 'solid-dismiss';
 import { Footer } from '../components/Footer';
 import { Icon } from 'solid-heroicons';
 import { useRouteData } from '@solidjs/router';
-import { useRouteReadyState } from '../utils/routeReadyState';
+import { useRouteReadyState } from '../utils';
 
 const Product: Component<{ details: ShopifyProduct; cart: CartUtilities }> = (props) => {
   const [current, setCurrent] = createSignal(props.details.variants[0].id);

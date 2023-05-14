@@ -13,7 +13,7 @@ export type LinkTypes = {
   links?: LinkTypes[];
   direction?: 'ltr' | 'rtl';
 };
-export type MenuLinkProps = {
+type MenuLinkProps = {
   setSubnav: (children: LinkTypes[]) => void;
   setSubnavPosition: (position: number) => void;
   closeSubnav: () => void;
