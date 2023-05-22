@@ -67,7 +67,7 @@ const Home: Component = () => {
     <>
       <header
         id="header"
-        class="via-solid-medium/85 relative z-[1] mx-2 overflow-hidden rounded-bl-3xl rounded-br-3xl bg-gradient-to-r from-solid-light to-solid-dark/80 text-white dark:from-solid-light/40 dark:via-solid-medium/80 dark:to-solid-medium/90"
+        class="via-solid-medium/85 relative z-[1] overflow-hidden rounded-bl-[2.5rem] rounded-br-[2.5rem] bg-gradient-to-r from-solid-light to-solid-dark/80 text-white dark:from-solid-light/40 dark:via-solid-medium/80 dark:to-solid-medium/90"
       >
         <a
           target="_blank"
